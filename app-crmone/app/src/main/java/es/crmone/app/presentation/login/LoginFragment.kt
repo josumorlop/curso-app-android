@@ -17,7 +17,7 @@ class LoginFragment: BaseFragment<FragmentLoginBinding>(R.layout.fragment_login)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
+        /*
         _binding = FragmentLoginBinding.bind(view)
 
 
@@ -36,7 +36,7 @@ class LoginFragment: BaseFragment<FragmentLoginBinding>(R.layout.fragment_login)
                 Toast.makeText(requireContext(), "Error", Toast.LENGTH_LONG).show()
             }
 
-        }
+        }*/
 
     }
 
