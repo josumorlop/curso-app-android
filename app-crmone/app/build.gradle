@@ -60,6 +60,8 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.8.1'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
+    //Cardview
+    //implementation 'com.androidx.support:cardview-v7:27.1.0'
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

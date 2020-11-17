@@ -9,10 +9,12 @@ import es.crmone.app.repository.clientes.ClientsRepository
 class ClientsViewModel(private val repository: ClientsRepository) : ViewModel() {
     private val _clientsLD = MutableLiveData<List<Client>>()
     val clientsLD: LiveData<List<Client>> = _clientsLD
+
+
     init {
         loadClients()
     }
-    private fun loadClients() {
+    fun loadClients() {
         repository.getClients(object: ClientsRepository.ClientsCallback {
             override fun onSuccess(clients: List<ClientDTO>) {
                 _clientsLD.value = clients.map { Client(it.cif, it.razonSocial) }
@@ -21,5 +23,19 @@ class ClientsViewModel(private val repository: ClientsRepository) : ViewModel() 
 
             }
         })
+    }
+
+    fun loadClientsQuery(query: String) {
+
+        repository.getClientsQuery(query, object: ClientsRepository.ClientsCallback {
+            override fun onSuccess(clients: List<ClientDTO>) {
+                _clientsLD.value = clients.map { Client(it.cif, it.razonSocial) }
+            }
+
+            override fun onError() {
+
+            }
+        })
+
     }
 }

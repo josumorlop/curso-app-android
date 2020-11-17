@@ -25,4 +25,22 @@ class RemoteClientsRepository(private val api: EndPoints = RetrofitService.endpo
         })
     }
 
+    override fun getClientsQuery(query: String, callback: ClientsRepository.ClientsCallback) {
+        api.getClientsQuery(query).enqueue(object : Callback<List<ClientDTO>> {
+            override fun onResponse(call: Call<List<ClientDTO>>, response: Response<List<ClientDTO>>) {
+                if (response.isSuccessful) {
+                    val clients = response.body()
+                    if (clients!=null) {
+                        callback.onSuccess(clients)
+                        return
+                    }
+                }
+                callback.onError()
+            }
+            override fun onFailure(call: Call<List<ClientDTO>>, t: Throwable) {
+                callback.onError()
+            }
+        })
+    }
+
 }

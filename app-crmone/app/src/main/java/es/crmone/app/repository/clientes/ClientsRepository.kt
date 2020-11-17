@@ -6,4 +6,5 @@ interface ClientsRepository {
         fun onError()
     }
     fun getClients(callback: ClientsCallback)
+    fun getClientsQuery(query: String, callback: ClientsCallback)
 }
