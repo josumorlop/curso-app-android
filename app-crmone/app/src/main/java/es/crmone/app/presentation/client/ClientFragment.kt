@@ -2,6 +2,7 @@ package es.crmone.app.presentation.client
 
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -20,7 +21,12 @@ class ClientFragment : BaseFragment<FragmentClientBinding>(R.layout.fragment_cli
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+
         _binding = FragmentClientBinding.bind(view)
+
+        binding.etBuscar.setOnQueryTextListener(this)
+
         with(binding.rvClients) {
             layoutManager = LinearLayoutManager(requireContext())
             setHasFixedSize(true)
@@ -33,7 +39,6 @@ class ClientFragment : BaseFragment<FragmentClientBinding>(R.layout.fragment_cli
     override fun onQueryTextSubmit(query: String?): Boolean {
 
         if (query != null) {
-
             viewModel.loadClientsQuery(query)
         }
         return true
