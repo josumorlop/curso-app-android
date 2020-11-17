@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_client"
-    app:startDestination="@id/clientFragment">
+    app:startDestination="@id/navClientFragment">
 
     <fragment
-        android:id="@+id/clientFragment"
+        android:id="@+id/navClientFragment"
         android:name="es.crmone.app.presentation.client.ClientFragment"
         android:label="ClientFragment" />
 </navigation>

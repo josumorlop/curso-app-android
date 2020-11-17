@@ -35,7 +35,7 @@
             android:layout_height="match_parent"
             android:layout_above="@+id/bnvMenu"
             app:defaultNavHost="true"
-            app:navGraph="@navigation/nav_home"
+            app:navGraph="@navigation/nav_client"
 
             />
 
