@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navHomeFragment"
+        android:title="Inicio"
+        android:icon="@drawable/ic_home"
+        />
+
+    <item
+        android:id="@+id/navClientFragment"
+        android:title="Clientes"
+        android:icon="@drawable/ic_client"
+        />
+
+    <item
+        android:id="@+id/navCalendarFragment"
+        android:title="Actividad"
+        android:icon="@drawable/ic_calendar"
+        />
+
+    <item
+        android:id="@+id/navMapFragment"
+        android:title="Mapa"
+        android:icon="@drawable/ic_map"
+        />
+
+</menu>
