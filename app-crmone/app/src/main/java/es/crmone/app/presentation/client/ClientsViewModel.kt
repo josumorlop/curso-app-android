@@ -14,7 +14,7 @@ class ClientsViewModel(private val repository: ClientsRepository) : ViewModel() 
     init {
         loadClients()
     }
-    fun loadClients() {
+    private fun loadClients() {
         repository.getClients(object: ClientsRepository.ClientsCallback {
             override fun onSuccess(clients: List<ClientDTO>) {
                 _clientsLD.value = clients.map { Client(it.cif, it.razonSocial) }
