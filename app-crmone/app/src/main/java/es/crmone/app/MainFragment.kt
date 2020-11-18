@@ -95,6 +95,7 @@ class MainFragment: BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
         }*/
 
     }
-
-
+    fun openDrawer() {
+        binding.drawerLayout.open()
+    }
 }
