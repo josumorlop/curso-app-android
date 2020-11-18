@@ -18,6 +18,10 @@ class ClientFragment : BaseFragment<FragmentClientBinding>(R.layout.fragment_cli
         ClientVMFactory(RemoteClientsRepository())
     }
 
+    private val listenerClient =  { client: Client ->
+        viewModel.seleccionar(client)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -31,8 +35,8 @@ class ClientFragment : BaseFragment<FragmentClientBinding>(R.layout.fragment_cli
             layoutManager = LinearLayoutManager(requireContext())
             setHasFixedSize(true)
         }
-        viewModel.clientsLD.observe(viewLifecycleOwner) {
-            binding.rvClients.adapter = ClientesAdapter(it)
+        viewModel.clientsLD.observe(viewLifecycleOwner) { listaClientes ->
+            binding.rvClients.adapter = ClientesAdapter(listaClientes, listenerClient)
         }
     }
 

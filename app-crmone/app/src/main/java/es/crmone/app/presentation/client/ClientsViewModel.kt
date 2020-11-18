@@ -38,4 +38,7 @@ class ClientsViewModel(private val repository: ClientsRepository) : ViewModel() 
         })
 
     }
+    fun seleccionar(client: Client) {
+
+    }
 }
