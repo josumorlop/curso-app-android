@@ -1,32 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="?android:attr/actionBarSize"
-        android:fitsSystemWindows="true"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:layout_height="wrap_content"
+        android:id="@+id/layout1"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/myToolbar"
+        android:background="?attr/selectableItemBackground"
+        android:minHeight="64dp">
+
+        <ImageView
+            android:src="@drawable/ic_client"
+            android:id="@+id/mtrl_list_item_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"/>
+
+        <TextView
+            android:text="HOla que tal"
+            android:id="@+id/mtrl_list_item_text"
             android:layout_width="match_parent"
-            android:layout_height="?android:attr/actionBarSize"
-            android:background="@color/colorPrimary"
-            android:elevation="5dp"
-            app:layout_collapseMode="pin"
-            app:navigationIcon="@drawable/ic_menu"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" >
-            <androidx.appcompat.widget.SearchView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-        </androidx.appcompat.widget.Toolbar>
-    </com.google.android.material.appbar.AppBarLayout>
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/mtrl_list_item_icon"
+            android:paddingTop="16dp"
+            android:paddingEnd="16dp"
+            android:maxLines="1"
+            android:textAppearance="?attr/textAppearanceSubtitle1"
+            android:textColor="@color/colorPrimary"/>
+
+        <TextView
+            android:text="Y esto es otro texto"
+            android:id="@+id/mtrl_list_item_secondary_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mtrl_list_item_text"
+            android:layout_gravity="center_vertical"
+            android:layout_toEndOf="@id/mtrl_list_item_icon"
+            android:paddingEnd="16dp"
+            android:maxLines="2"
+            android:textAppearance="?attr/textAppearanceBody2"
+            android:textColor="@color/colorSecondary"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/layout1"
+
+        android:id="@+id/layout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="?attr/selectableItemBackground"
+        android:minHeight="64dp">
+
+        <ImageView
+            android:src="@drawable/ic_client"
+            android:id="@+id/mtrl_list_item_icon2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"/>
+
+        <TextView
+            android:text="HOla que tal"
+            android:id="@+id/mtrl_list_item_text2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/mtrl_list_item_icon2"
+            android:paddingTop="16dp"
+            android:paddingEnd="16dp"
+            android:maxLines="1"
+            android:textAppearance="?attr/textAppearanceSubtitle1"
+            android:textColor="@color/colorPrimary"/>
+
+        <TextView
+            android:text="Y esto es otro texto"
+            android:id="@+id/mtrl_list_item_secondary_text2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mtrl_list_item_text2"
+            android:layout_gravity="center_vertical"
+            android:layout_toEndOf="@id/mtrl_list_item_icon2"
+            android:paddingEnd="16dp"
+            android:maxLines="2"
+            android:textAppearance="?attr/textAppearanceBody2"
+            android:textColor="@color/colorSecondary"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/layout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+
+        android:background="?attr/selectableItemBackground"
+        android:minHeight="64dp">
+
+        <ImageView
+            android:src="@drawable/ic_client"
+            android:id="@+id/mtrl_list_item_icon3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"/>
+
+        <TextView
+            android:text="HOla que tal"
+            android:id="@+id/mtrl_list_item_text3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/mtrl_list_item_icon3"
+            android:paddingTop="16dp"
+            android:paddingEnd="16dp"
+            android:maxLines="1"
+            android:textAppearance="?attr/textAppearanceSubtitle1"
+            android:textColor="@color/colorPrimary"/>
+
+        <TextView
+            android:text="Y esto es otro texto"
+            android:id="@+id/mtrl_list_item_secondary_text3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mtrl_list_item_text3"
+            android:layout_gravity="center_vertical"
+            android:layout_toEndOf="@id/mtrl_list_item_icon3"
+            android:paddingEnd="16dp"
+            android:maxLines="2"
+            android:textAppearance="?attr/textAppearanceBody2"
+            android:textColor="@color/colorSecondary"/>
+
+    </RelativeLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

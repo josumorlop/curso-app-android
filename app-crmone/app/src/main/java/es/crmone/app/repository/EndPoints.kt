@@ -14,7 +14,6 @@ interface EndPoints {
     @POST("login")
     fun login(@Body body: LoginBodyRequest): Call<User>
 
-
     @GET("clients/{query}")
     fun getClientsQuery(@Path("query") query: String?): Call<List<ClientDTO>>
 

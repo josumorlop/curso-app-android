@@ -18,6 +18,11 @@ class LoginFragment: BaseFragment<FragmentLoginBinding>(R.layout.fragment_login)
         super.onViewCreated(view, savedInstanceState)
 
 
+        //TEMPORAL. /////////
+        findNavController().navigate(LoginFragmentDirections.actionLoginToHome())
+        /////////////////////
+
+
         _binding = FragmentLoginBinding.bind(view)
 
 

@@ -12,8 +12,11 @@ import es.crmone.app.databinding.FragmentHomeBinding
 
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
+
     private val viewModel by viewModels<HomeViewModel>()
     private lateinit var adapter: HomePagesAdapter
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentHomeBinding.bind(view)
@@ -31,12 +34,30 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
             }
             vp.adapter = adapter
             TabLayoutMediator(tabs, vp) { tab, position ->
-                tab.text = when(position) {
+                /*tab.text = when(position) {
                     0 -> "Opcion 1"
-                    1 -> "Opcion 2 AOAO"
+                    1 -> "Opcion 2"
                     else -> "jodeeeer"
+                }*/
+                when (position) {
+                    0 -> {
+                        tab.text = "Visitas"
+                        tab.setIcon(R.drawable.ic_calendar)
+
+                        val badge = tab.getOrCreateBadge()
+                        badge.number = 3
+
+                    }
+                    1 -> {
+                        tab.text = "Detalles"
+                        tab.setIcon(R.drawable.ic_client)
+                    }
                 }
+
+
+
             }.attach()
+
         }
     }
 }
