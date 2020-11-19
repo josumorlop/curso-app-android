@@ -58,7 +58,9 @@ dependencies {
     //Third parties
     implementation 'com.squareup.retrofit2:retrofit:2.8.1'
     implementation 'com.squareup.retrofit2:converter-gson:2.8.1'
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    implementation "androidx.viewpager2:viewpager2:1.0.0"
+//    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     //Cardview
     //implementation 'com.androidx.support:cardview-v7:27.1.0'

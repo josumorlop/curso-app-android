@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import es.crmone.app.common.BaseFragment
@@ -16,6 +17,10 @@ class ClientFragment : BaseFragment<FragmentClientBinding>(R.layout.fragment_cli
 
     private val viewModel by viewModels<ClientsViewModel> {
         ClientVMFactory(RemoteClientsRepository())
+    }
+
+    private val listenerClient =  { client: Client ->
+        viewModel.seleccionar(client)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -31,8 +36,8 @@ class ClientFragment : BaseFragment<FragmentClientBinding>(R.layout.fragment_cli
             layoutManager = LinearLayoutManager(requireContext())
             setHasFixedSize(true)
         }
-        viewModel.clientsLD.observe(viewLifecycleOwner) {
-            binding.rvClients.adapter = ClientesAdapter(it)
+        viewModel.clientsLD.observe(viewLifecycleOwner) { listaClientes ->
+            binding.rvClients.adapter = ClientesAdapter(listaClientes, listenerClient)
         }
     }
 

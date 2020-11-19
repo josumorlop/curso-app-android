@@ -3,12 +3,14 @@ package es.crmone.app.presentation.client
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import es.crmone.app.common.SingleLiveEvent
 import es.crmone.app.repository.clientes.ClientDTO
 import es.crmone.app.repository.clientes.ClientsRepository
 
 class ClientsViewModel(private val repository: ClientsRepository) : ViewModel() {
     private val _clientsLD = MutableLiveData<List<Client>>()
     val clientsLD: LiveData<List<Client>> = _clientsLD
+    val abrirNuevaPantalla = SingleLiveEvent<Client>()
 
 
     init {
@@ -37,5 +39,8 @@ class ClientsViewModel(private val repository: ClientsRepository) : ViewModel() 
             }
         })
 
+    }
+    fun seleccionar(client: Client) {
+        abrirNuevaPantalla.value = client
     }
 }
