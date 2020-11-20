@@ -13,10 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.App">
 
+        <!--
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAAyzuWDMB9HTRm-C_Qy1GrXwLT2LO510E"
             />
+           -->
 
         <activity android:name=".MainActivity">
             <intent-filter>
