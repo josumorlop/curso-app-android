@@ -1,4 +1,4 @@
-package es.crmone.app.presentation.home
+package es.crmone.app.presentation.client_detail
 
 import android.os.Bundle
 import android.view.View
@@ -11,7 +11,5 @@ class Fragment1 : BaseFragment<FragmentOneBinding>(R.layout.fragment_one) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentOneBinding.bind(view)
     }
-    fun actualizaaaar() {
 
-    }
 }

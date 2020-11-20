@@ -1,4 +1,4 @@
-package es.crmone.app.presentation.home
+package es.crmone.app.presentation.client_detail
 
 import android.os.Bundle
 import android.view.View

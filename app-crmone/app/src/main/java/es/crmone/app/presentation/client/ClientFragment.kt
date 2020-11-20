@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -27,7 +28,6 @@ class ClientFragment : BaseFragment<FragmentClientBinding>(R.layout.fragment_cli
         super.onViewCreated(view, savedInstanceState)
 
 
-
         _binding = FragmentClientBinding.bind(view)
 
         binding.etBuscar.setOnQueryTextListener(this)
@@ -39,6 +39,8 @@ class ClientFragment : BaseFragment<FragmentClientBinding>(R.layout.fragment_cli
         viewModel.clientsLD.observe(viewLifecycleOwner) { listaClientes ->
             binding.rvClients.adapter = ClientesAdapter(listaClientes, listenerClient)
         }
+
+
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {
