@@ -3,7 +3,10 @@ package es.crmone.app.presentation.client
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.navigation.fragment.NavHostFragment.findNavController
+import androidx.navigation.fragment.findNavController
 import es.crmone.app.common.SingleLiveEvent
+import es.crmone.app.presentation.client_detail.ClientDetailFragment
 import es.crmone.app.repository.clientes.ClientDTO
 import es.crmone.app.repository.clientes.ClientsRepository
 
