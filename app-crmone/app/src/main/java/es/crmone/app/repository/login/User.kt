@@ -1,4 +1,4 @@
-package es.crmone.app.models
+package es.crmone.app.repository.login
 
 data class UserProfile (
     val crm: String,

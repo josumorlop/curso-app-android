@@ -3,7 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/splashFragment">
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="es.crmone.app.presentation.splash.SplashFragment"
+        android:label="SplashFragment"
+        tools:layout="@layout/fragment_splash">
+        <action
+            android:id="@+id/action_to_login"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_to_main"
+            app:destination="@id/mainFragment" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="es.crmone.app.presentation.login.LoginFragment"
@@ -16,5 +28,6 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="es.crmone.app.MainFragment"
-        android:label="MainFragment" />
+        android:label="MainFragment"
+        tools:layout="@layout/fragment_main"/>
 </navigation>

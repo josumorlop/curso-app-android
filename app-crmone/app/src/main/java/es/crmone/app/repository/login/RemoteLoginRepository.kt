@@ -1,6 +1,5 @@
 package es.crmone.app.repository.login
 
-import es.crmone.app.models.User
 import es.crmone.app.repository.EndPoints
 import es.crmone.app.repository.RetrofitService
 
@@ -18,10 +17,10 @@ class RemoteLoginRepository(private val api: EndPoints = RetrofitService.endpoin
         api.login(bodyRequest).enqueue(object: Callback<User> {
             override fun onResponse(call: Call<User>, response: Response<User>) {
                 if (response.isSuccessful) {
-                    val body = response.body()
+                    val body: User? = response.body()
 
                     if (body!=null) {
-                        callback.onSuccess(true)
+                        callback.onSuccess(true, body)
                     } else {
                         callback.onSuccess(false)
                     }

@@ -1,6 +1,6 @@
 package es.crmone.app.repository
 
-import es.crmone.app.models.User
+import es.crmone.app.repository.login.User
 import es.crmone.app.repository.login.LoginBodyRequest
 import es.crmone.app.repository.calendar.CalendarDTO
 import es.crmone.app.repository.clientes.ClientDTO

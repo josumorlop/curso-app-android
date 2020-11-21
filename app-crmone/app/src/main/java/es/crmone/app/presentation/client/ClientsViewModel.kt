@@ -6,8 +6,10 @@ import androidx.lifecycle.ViewModel
 import es.crmone.app.common.SingleLiveEvent
 import es.crmone.app.repository.clientes.ClientDTO
 import es.crmone.app.repository.clientes.ClientsRepository
+import es.crmone.app.repository.session.SessionRepository
 
-class ClientsViewModel(private val repository: ClientsRepository) : ViewModel() {
+class ClientsViewModel(private val repository: ClientsRepository,
+                       private val sessionRepository: SessionRepository) : ViewModel() {
     private val _clientsLD = MutableLiveData<List<Client>>()
     private val _goToClientDetailLD = SingleLiveEvent<Int>()
     val clientsLD: LiveData<List<Client>> = _clientsLD

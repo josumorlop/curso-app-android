@@ -7,6 +7,6 @@ import es.crmone.app.repository.clientes.ClientsRepository
 
 internal class ClientVMFactory: ViewModelProvider.NewInstanceFactory() {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T = ClientsViewModel(
-        Injections.clientRepository
+        Injections.clientRepository, Injections.sessionRepository
     ) as T
 }

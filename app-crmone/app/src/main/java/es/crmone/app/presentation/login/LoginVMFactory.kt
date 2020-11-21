@@ -10,6 +10,6 @@ import es.crmone.app.repository.login.RemoteLoginRepository
 
 internal class LoginVMFactory : ViewModelProvider.NewInstanceFactory() {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T = LoginViewModel(
-        Injections.loginRepository
+        Injections.loginRepository, Injections.sessionRepository
     ) as T
 }

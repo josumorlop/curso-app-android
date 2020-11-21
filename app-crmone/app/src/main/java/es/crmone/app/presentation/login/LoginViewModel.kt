@@ -2,17 +2,13 @@ package es.crmone.app.presentation.login
 
 import androidx.lifecycle.ViewModel
 import es.crmone.app.common.SingleLiveEvent
-import es.crmone.app.common.capitalizeFirstLetter
-import es.crmone.app.models.User
-import es.crmone.app.repository.RetrofitService
-import es.crmone.app.repository.login.LoginBodyRequest
 import es.crmone.app.repository.login.LoginRepository
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import es.crmone.app.repository.login.User
+import es.crmone.app.repository.session.SessionRepository
 
 
-class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
+class LoginViewModel(private val loginRepository: LoginRepository,
+                     private val sessionRepository: SessionRepository) : ViewModel() {
 
     val loginSuccess = SingleLiveEvent<Boolean>() // LiveData
 
@@ -36,7 +32,10 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
 
     private fun queryTemporal(email: String, password: String) {
         loginRepository.login(email, password, object : LoginRepository.LoginCallback {
-            override fun onSuccess(success: Boolean) {
+            override fun onSuccess(success: Boolean, user: User?) {
+                if (success && user!=null) {
+                    sessionRepository.save(user)
+                }
                 loginSuccess.value = success
             }
 
