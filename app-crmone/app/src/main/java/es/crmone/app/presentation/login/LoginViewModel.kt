@@ -2,15 +2,17 @@ package es.crmone.app.presentation.login
 
 import androidx.lifecycle.ViewModel
 import es.crmone.app.common.SingleLiveEvent
+import es.crmone.app.common.capitalizeFirstLetter
 import es.crmone.app.models.User
 import es.crmone.app.repository.RetrofitService
 import es.crmone.app.repository.login.LoginBodyRequest
+import es.crmone.app.repository.login.LoginRepository
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 
-class LoginViewModel : ViewModel() {
+class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
 
     val loginSuccess = SingleLiveEvent<Boolean>() // LiveData
 
@@ -27,36 +29,22 @@ class LoginViewModel : ViewModel() {
             return
         }
 
-        //loginSuccess.value = true
         queryTemporal(email, password)
 
     }
 
 
     private fun queryTemporal(email: String, password: String) {
-
-        val bodyRequest = LoginBodyRequest(email, password)
-        RetrofitService.endpoints.login(bodyRequest).enqueue(object: Callback<User> {
-            override fun onResponse(call: Call<User>, response: Response<User>) {
-                if (response.isSuccessful) {
-                    val body = response.body()
-
-                    if (body!=null) {
-//                        body.profile.crm
-                        loginSuccess.value = true
-                    }
-                } else {
-                    loginSuccess.value = false
-                }
+        loginRepository.login(email, password, object : LoginRepository.LoginCallback {
+            override fun onSuccess(success: Boolean) {
+                loginSuccess.value = success
             }
 
-            override fun onFailure(call: Call<User>, t: Throwable) {
+            override fun onError() {
                 loginSuccess.value = false
             }
 
         })
-
     }
-
 
 }

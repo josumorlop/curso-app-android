@@ -11,17 +11,13 @@ import es.crmone.app.databinding.FragmentLoginBinding
 
 class LoginFragment: BaseFragment<FragmentLoginBinding>(R.layout.fragment_login) {
 
-    val viewModel by viewModels<LoginViewModel>()
+    private val viewModel by viewModels<LoginViewModel>() {
+        LoginVMFactory()
+    }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
-        //TEMPORAL. /////////
-        findNavController().navigate(LoginFragmentDirections.actionLoginToHome())
-        /////////////////////
-
 
         _binding = FragmentLoginBinding.bind(view)
 
