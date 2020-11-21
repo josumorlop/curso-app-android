@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import es.crmone.app.common.BaseFragment
 import es.crmone.app.R
 import es.crmone.app.databinding.FragmentClientBinding
+import es.crmone.app.presentation.client_detail.ClientDetailFragmentDirections
 import es.crmone.app.repository.clientes.RemoteClientsRepository
 
 
@@ -27,7 +28,6 @@ class ClientFragment : BaseFragment<FragmentClientBinding>(R.layout.fragment_cli
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         _binding = FragmentClientBinding.bind(view)
 
         binding.etBuscar.setOnQueryTextListener(this)
@@ -36,11 +36,14 @@ class ClientFragment : BaseFragment<FragmentClientBinding>(R.layout.fragment_cli
             layoutManager = LinearLayoutManager(requireContext())
             setHasFixedSize(true)
         }
-        viewModel.clientsLD.observe(viewLifecycleOwner) { listaClientes ->
-            binding.rvClients.adapter = ClientesAdapter(listaClientes, listenerClient)
+        with(viewModel) {
+            clientsLD.observe(viewLifecycleOwner) { listaClientes ->
+                binding.rvClients.adapter = ClientesAdapter(listaClientes, listenerClient)
+            }
+            goToClientDetailLD.observe(viewLifecycleOwner) { idClient ->
+                findNavController().navigate(ClientFragmentDirections.actionToClientDetail(idClient))
+            }
         }
-
-
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {

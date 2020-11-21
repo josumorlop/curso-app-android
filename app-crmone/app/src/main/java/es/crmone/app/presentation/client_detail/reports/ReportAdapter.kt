@@ -1,4 +1,4 @@
-package es.crmone.app.presentation.calendar
+package es.crmone.app.presentation.client_detail.reports
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,8 +6,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import es.crmone.app.R
 import es.crmone.app.databinding.CellCalendarBinding
+import es.crmone.app.presentation.calendar.CalendarOne
 
-class CalendarAdapter(private val calendar: List<CalendarOne>): RecyclerView.Adapter<CalendarAdapter.CalendarVH>() {
+class ReportAdapter(private val calendar: List<CalendarOne>): RecyclerView.Adapter<ReportAdapter.CalendarVH>() {
 
     class CalendarVH internal constructor(itemView: View): RecyclerView.ViewHolder(itemView) {
         private val binding = CellCalendarBinding.bind(itemView)

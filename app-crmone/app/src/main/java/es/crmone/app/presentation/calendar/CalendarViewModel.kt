@@ -10,8 +10,8 @@ import es.crmone.app.repository.calendar.CalendarRepository
 
 
 class CalendarViewModel(private val repository: CalendarRepository) : ViewModel() {
-    private val _calendarLD = MutableLiveData<List<Calendar>>()
-    val calendarLD: LiveData<List<Calendar>> = _calendarLD
+    private val _calendarLD = MutableLiveData<List<CalendarOne>>()
+    val calendarLD: LiveData<List<CalendarOne>> = _calendarLD
 
 
     init {
@@ -21,10 +21,11 @@ class CalendarViewModel(private val repository: CalendarRepository) : ViewModel(
         repository.getCalendar(object: CalendarRepository.CalendarCallback {
             override fun onSuccess(calendar: List<CalendarDTO>) {
                 _calendarLD.value = calendar.map {
-                    Calendar(
+                    CalendarOne(
                         it.id,
                         it.fecha,
                         it.hora,
+                        it.horaFin,
                         it.comentarios
                     )
                 }

@@ -8,4 +8,5 @@ interface CalendarRepository {
         fun onError()
     }
     fun getCalendar(callback: CalendarCallback)
+    fun getCalendar(idClient: Int, callback: CalendarCallback)
 }

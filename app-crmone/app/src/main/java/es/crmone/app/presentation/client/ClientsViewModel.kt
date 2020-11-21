@@ -3,17 +3,15 @@ package es.crmone.app.presentation.client
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.navigation.fragment.NavHostFragment.findNavController
-import androidx.navigation.fragment.findNavController
 import es.crmone.app.common.SingleLiveEvent
-import es.crmone.app.presentation.client_detail.ClientDetailFragment
 import es.crmone.app.repository.clientes.ClientDTO
 import es.crmone.app.repository.clientes.ClientsRepository
 
 class ClientsViewModel(private val repository: ClientsRepository) : ViewModel() {
     private val _clientsLD = MutableLiveData<List<Client>>()
+    private val _goToClientDetailLD = SingleLiveEvent<Int>()
     val clientsLD: LiveData<List<Client>> = _clientsLD
-    val abrirNuevaPantalla = SingleLiveEvent<Client>()
+    val goToClientDetailLD: LiveData<Int> = _goToClientDetailLD
 
 
     init {
@@ -22,7 +20,7 @@ class ClientsViewModel(private val repository: ClientsRepository) : ViewModel() 
     private fun loadClients() {
         repository.getClients(object: ClientsRepository.ClientsCallback {
             override fun onSuccess(clients: List<ClientDTO>) {
-                _clientsLD.value = clients.map { Client(it.cif, it.razonSocial) }
+                _clientsLD.value = clients.map { Client(it.id, it.cif, it.razonSocial) }
             }
             override fun onError() {
 
@@ -34,7 +32,7 @@ class ClientsViewModel(private val repository: ClientsRepository) : ViewModel() 
 
         repository.getClientsQuery(query, object: ClientsRepository.ClientsCallback {
             override fun onSuccess(clients: List<ClientDTO>) {
-                _clientsLD.value = clients.map { Client(it.cif, it.razonSocial) }
+                _clientsLD.value = clients.map { Client(it.id, it.cif, it.razonSocial) }
             }
 
             override fun onError() {
@@ -44,6 +42,6 @@ class ClientsViewModel(private val repository: ClientsRepository) : ViewModel() 
 
     }
     fun seleccionar(client: Client) {
-        abrirNuevaPantalla.value = client
+        _goToClientDetailLD.value = client.id
     }
 }

@@ -11,7 +11,7 @@
         android:label="ClientFragment"
         tools:layout="@layout/fragment_client">
         <action
-            android:id="@+id/action_client_to_clientDetail"
+            android:id="@+id/action_to_clientDetail"
             app:destination="@id/clientDetailFragment" />
     </fragment>
     <fragment
@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_clientDetail_to_report"
             app:destination="@id/reportFragment" />
+        <argument
+            android:name="idClient"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/reportFragment"

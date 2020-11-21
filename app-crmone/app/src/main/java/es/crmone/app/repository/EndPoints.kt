@@ -23,4 +23,7 @@ interface EndPoints {
     @GET("calendar")
     fun getCalendar(): Call<List<CalendarDTO>>
 
+    @GET("calendar/{query}")
+    fun getCalendar(@Path("query") idClient: Int): Call<List<CalendarDTO>>
+
 }

@@ -25,4 +25,21 @@ class RemoteCalendarRepository(private val api: EndPoints = RetrofitService.endp
             }
         })
     }
+    override fun getCalendar(idClient: Int, callback: CalendarRepository.CalendarCallback) {
+        api.getCalendar(idClient).enqueue(object : Callback<List<CalendarDTO>> {
+            override fun onResponse(call: Call<List<CalendarDTO>>, response: Response<List<CalendarDTO>>) {
+                if (response.isSuccessful) {
+                    val calendar = response.body()
+                    if (calendar!=null) {
+                        callback.onSuccess(calendar)
+                        return
+                    }
+                }
+                callback.onError()
+            }
+            override fun onFailure(call: Call<List<CalendarDTO>>, t: Throwable) {
+                callback.onError()
+            }
+        })
+    }
 }
