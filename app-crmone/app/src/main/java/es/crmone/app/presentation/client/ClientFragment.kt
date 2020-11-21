@@ -17,9 +17,7 @@ import es.crmone.app.repository.clientes.RemoteClientsRepository
 
 class ClientFragment : BaseFragment<FragmentClientBinding>(R.layout.fragment_client), androidx.appcompat.widget.SearchView.OnQueryTextListener {
 
-    private val viewModel by viewModels<ClientsViewModel> {
-        ClientVMFactory(RemoteClientsRepository())
-    }
+    private val viewModel by viewModels<ClientsViewModel> { ClientVMFactory() }
 
     private val listenerClient =  { client: Client ->
         viewModel.seleccionar(client)

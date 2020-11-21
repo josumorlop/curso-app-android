@@ -26,7 +26,7 @@ class ReportsFragment : BaseFragment<FragmentReportsBinding>(R.layout.fragment_r
         arguments?.getInt(ReportsFragment.idClient)?:throw Exception("idClient not found")
     }
     private val viewModel by viewModels<ReportsViewModel>() {
-        ReportsVMFactory(idClient, RemoteCalendarRepository())
+        ReportsVMFactory(idClient)
     }
     private lateinit var viewModelPadreClientDetail: ClientDetailViewModel
     lateinit var adapter: ReportAdapter
