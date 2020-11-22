@@ -5,3 +5,9 @@ class Client (
     val cif: String,
     val razonSocial: String
 )
+
+class ClientInfo (
+    val id: Int,
+    val cif: String,
+    val razonSocial: String
+)
