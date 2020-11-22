@@ -10,6 +10,7 @@ import es.crmone.app.MainFragment
 import es.crmone.app.R
 import es.crmone.app.common.BaseFragment
 import es.crmone.app.databinding.FragmentClientDetailBinding
+import es.crmone.app.presentation.client.ClientFragmentDirections
 import es.crmone.app.repository.calendar.RemoteCalendarRepository
 
 
@@ -26,8 +27,10 @@ class ClientDetailFragment : BaseFragment<FragmentClientDetailBinding>(R.layout.
         _binding = FragmentClientDetailBinding.bind(view)
         adapter = ClientDetailPagesAdapter(this, inputArgs.idClient)
         setupTabViews()
-
-        toolbarClickListener()
+        binding.btReportar.setOnClickListener {
+            viewModel.report()
+        }
+        setupBackButton(binding.myToolbar)
     }
 
     private fun setupTabViews() {
@@ -57,12 +60,13 @@ class ClientDetailFragment : BaseFragment<FragmentClientDetailBinding>(R.layout.
             pendingsLD.observe(viewLifecycleOwner) {
                 //actualizar tabs
             }
+            goToReportLD.observe(viewLifecycleOwner) { idClient ->
+                findNavController().navigate(
+                    ClientDetailFragmentDirections.actionToReport(idClient),
+                    fragmentAnimation().build()
+                )
+            }
         }
-    }
-
-
-    private fun toolbarClickListener() {
-        binding.myToolbar.setNavigationOnClickListener { findNavController().navigateUp() }
     }
 
 }

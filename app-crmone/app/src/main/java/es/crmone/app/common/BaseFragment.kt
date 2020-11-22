@@ -1,8 +1,11 @@
 package es.crmone.app.common
 
+import androidx.activity.addCallback
 import androidx.annotation.LayoutRes
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavOptions
+import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
 import es.crmone.app.R
 
@@ -15,6 +18,12 @@ open class BaseFragment<T: ViewBinding>(@LayoutRes contentLayoutId: Int): Fragme
     override fun onDestroyView() {
         _binding = null
         super.onDestroyView()
+    }
+    open fun setupBackButton(toolbar: Toolbar){
+        toolbar.setNavigationOnClickListener{ findNavController().navigateUp() }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            findNavController().navigateUp()
+        }
     }
 
     fun fragmentAnimation(): NavOptions.Builder {
