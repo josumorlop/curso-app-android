@@ -52,11 +52,13 @@ class ReportViewModel(private val idClient: Int, private val ReportRepository: R
                     if (success) {
                         _closeReport.call()
                     } else {
+                        _closeReport.call()
                         errorReport.value = "Error"
                     }
                 }
 
                 override fun onError() {
+                    _closeReport.call()
                     errorReport.value = "Error"
                 }
 
