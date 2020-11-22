@@ -3,6 +3,7 @@ package es.crmone.app.presentation.client_detail
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.tabs.TabLayoutMediator
 import es.crmone.app.MainFragment
@@ -61,12 +62,7 @@ class ClientDetailFragment : BaseFragment<FragmentClientDetailBinding>(R.layout.
 
 
     private fun toolbarClickListener() {
-        binding.myToolbar.setNavigationOnClickListener {
-            val mainFragment: MainFragment? = (parentFragment?.parentFragment as? MainFragment)
-            mainFragment?.also {
-                it.openDrawer()
-            }
-        }
+        binding.myToolbar.setNavigationOnClickListener { findNavController().navigateUp() }
     }
 
 }

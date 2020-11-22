@@ -8,6 +8,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import es.crmone.app.MainFragment
 import es.crmone.app.common.BaseFragment
 import es.crmone.app.R
 import es.crmone.app.databinding.FragmentClientBinding
@@ -28,12 +29,7 @@ class ClientFragment : BaseFragment<FragmentClientBinding>(R.layout.fragment_cli
 
         _binding = FragmentClientBinding.bind(view)
 
-        binding.etBuscar.setOnQueryTextListener(this)
-
-        with(binding.rvClients) {
-            layoutManager = LinearLayoutManager(requireContext())
-            setHasFixedSize(true)
-        }
+        setupView()
         with(viewModel) {
             clientsLD.observe(viewLifecycleOwner) { listaClientes ->
                 binding.rvClients.adapter = ClientesAdapter(listaClientes, listenerClient)
@@ -41,6 +37,20 @@ class ClientFragment : BaseFragment<FragmentClientBinding>(R.layout.fragment_cli
             goToClientDetailLD.observe(viewLifecycleOwner) { idClient ->
                 findNavController().navigate(ClientFragmentDirections.actionToClientDetail(idClient))
             }
+        }
+    }
+    private fun setupView() {
+        binding.etBuscar.setOnQueryTextListener(this)
+        binding.myToolbar.setNavigationOnClickListener {
+            val mainFragment: MainFragment? = (parentFragment?.parentFragment as? MainFragment)
+            mainFragment?.also {
+                it.openDrawer()
+            }
+        }
+
+        with(binding.rvClients) {
+            layoutManager = LinearLayoutManager(requireContext())
+            setHasFixedSize(true)
         }
     }
 

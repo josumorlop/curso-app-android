@@ -22,7 +22,7 @@
             android:background="@color/colorPrimary"
             android:elevation="5dp"
             app:layout_collapseMode="pin"
-            app:navigationIcon="@drawable/ic_menu"
+            app:navigationIcon="@drawable/ic_arrow_back"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
             <TextView
