@@ -29,9 +29,11 @@ class LoginFragment: BaseFragment<FragmentLoginBinding>(R.layout.fragment_login)
 
 
         viewModel.loginSuccess.observe(viewLifecycleOwner) {success ->
-
+            val animation = fragmentAnimation()
+                .setPopUpTo(R.id.loginFragment, true)
+                .build()
             if (success) {
-                findNavController().navigate(LoginFragmentDirections.actionLoginToHome())
+                findNavController().navigate(LoginFragmentDirections.actionLoginToHome(), animation)
             } else {
                 //Mostramos un error.
                 Toast.makeText(requireContext(), "Error", Toast.LENGTH_LONG).show()

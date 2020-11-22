@@ -35,9 +35,17 @@ class ClientFragment : BaseFragment<FragmentClientBinding>(R.layout.fragment_cli
                 binding.rvClients.adapter = ClientesAdapter(listaClientes, listenerClient)
             }
             goToClientDetailLD.observe(viewLifecycleOwner) { idClient ->
-                findNavController().navigate(ClientFragmentDirections.actionToClientDetail(idClient))
+                findNavController().navigate(
+                    ClientFragmentDirections.actionToClientDetail(idClient),
+                    fragmentAnimation().build()
+                )
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.loadClients()
     }
     private fun setupView() {
         binding.etBuscar.setOnQueryTextListener(this)

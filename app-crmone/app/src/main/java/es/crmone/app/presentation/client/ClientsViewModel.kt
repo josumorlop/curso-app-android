@@ -15,11 +15,7 @@ class ClientsViewModel(private val repository: ClientsRepository,
     val clientsLD: LiveData<List<Client>> = _clientsLD
     val goToClientDetailLD: LiveData<Int> = _goToClientDetailLD
 
-
-    init {
-        loadClients()
-    }
-    private fun loadClients() {
+    fun loadClients() {
         repository.getClients(object: ClientsRepository.ClientsCallback {
             override fun onSuccess(clients: List<ClientDTO>) {
                 _clientsLD.value = clients.map { Client(it.id, it.cif, it.razonSocial) }

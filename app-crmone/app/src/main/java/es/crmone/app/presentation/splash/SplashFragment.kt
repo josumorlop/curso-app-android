@@ -21,10 +21,13 @@ class SplashFragment: BaseFragment<FragmentSplashBinding>(R.layout.fragment_spla
 
         zipLiveData(viewModel.loadSplashLD, viewModel.userLoggedLD).observe(viewLifecycleOwner) {
             val userLogged = it.second
+            val animation = fragmentAnimation()
+                .setPopUpTo(R.id.splashFragment, true)
+                .build()
             if (userLogged) {
-                findNavController().navigate(SplashFragmentDirections.actionToMain())
+                findNavController().navigate(SplashFragmentDirections.actionToMain(), animation)
             } else {
-                findNavController().navigate(SplashFragmentDirections.actionToLogin())
+                findNavController().navigate(SplashFragmentDirections.actionToLogin(), animation)
             }
 
         }
