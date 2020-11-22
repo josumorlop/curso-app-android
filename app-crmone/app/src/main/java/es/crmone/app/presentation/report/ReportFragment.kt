@@ -4,9 +4,11 @@ import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationServices
@@ -16,10 +18,14 @@ import es.crmone.app.common.BaseFragment
 import es.crmone.app.databinding.FragmentReportBinding
 
 
+
 class ReportFragment : BaseFragment<FragmentReportBinding>(R.layout.fragment_report) {
+
+    private val inputArgs: ReportFragmentArgs by navArgs()
+
     private val REQUEST_CODE_LOCATION = 1
     private val viewModel by viewModels<ReportViewModel> {
-        ReportVMFactory()
+        ReportVMFactory(inputArgs.idClient)
     }
     private lateinit var fusedLocationClient: FusedLocationProviderClient
 
@@ -39,6 +45,9 @@ class ReportFragment : BaseFragment<FragmentReportBinding>(R.layout.fragment_rep
             }
             closeReport.observe(viewLifecycleOwner) {
                 findNavController().navigateUp()
+            }
+            errorReport.observe(viewLifecycleOwner) {
+                Toast.makeText(requireContext(), errorReport.value, Toast.LENGTH_LONG).show()
             }
         }
     }
