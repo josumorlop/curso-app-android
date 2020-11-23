@@ -113,7 +113,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvClients"
-        android:background="#ecf0f5"
+        android:background="@color/backgroundColorFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"

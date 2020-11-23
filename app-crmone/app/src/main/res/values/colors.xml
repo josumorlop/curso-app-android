@@ -9,5 +9,5 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="backgroundColorFragment">#edf0f2</color>
+    <color name="backgroundColorFragment">#ecf0f5</color>
 </resources>
