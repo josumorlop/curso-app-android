@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="colorPrimary">#3c8dbc</color>
-    <color name="colorSecondary">#222d32</color>
+    <color name="colorPrimary">#344955</color>
+    <color name="colorPrimaryVariant">#232f34</color>
+
+
+    <color name="colorSecondary">#F9AA33</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="backgroundColorFragment">#edf0f2</color>
 </resources>

@@ -21,23 +21,24 @@ class RemoteReportRepository(private val api: EndPoints = RetrofitService.endpoi
         callback: ReportRepository.ReportCallback
     ) {
         val bodyRequest = ReportBodyRequest(idClient, user, observations, latitute, longitude, accuracy)
-        api.insertReport(bodyRequest).enqueue(object: Callback<Boolean> {
-            override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
-                if (response.isSuccessful) {
-                    val body: Boolean? = response.body()
+        api.insertReport(bodyRequest).enqueue(object: Callback<ReportDTO> {
+            override fun onResponse(call: Call<ReportDTO>, response: Response<ReportDTO>) {
 
-                    if (body!=null) {
-                        callback.onSuccess(true)
+                if (response.isSuccessful) {
+                    val data: ReportDTO? = response.body()
+
+                    if (data!=null) {
+                        callback.onSuccess(data.success)
                     } else {
-                        callback.onSuccess(false)
+                        callback.onError()
                     }
                 } else {
-                    callback.onSuccess(false)
+                    callback.onError()
                 }
             }
 
-            override fun onFailure(call: Call<Boolean>, t: Throwable) {
-                callback.onSuccess(false)
+            override fun onFailure(call: Call<ReportDTO>, t: Throwable) {
+                callback.onError()
             }
         })
     }

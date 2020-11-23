@@ -6,6 +6,7 @@ import es.crmone.app.repository.clientes.ClientDTO
 import es.crmone.app.repository.login.LoginBodyRequest
 import es.crmone.app.repository.login.User
 import es.crmone.app.repository.report.ReportBodyRequest
+import es.crmone.app.repository.report.ReportDTO
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -32,6 +33,6 @@ interface EndPoints {
     fun getCalendar(@Path("query") idClient: Int): Call<List<CalendarDTO>>
 
     @POST("report")
-    fun insertReport(@Body body: ReportBodyRequest): Call<Boolean>
+    fun insertReport(@Body body: ReportBodyRequest): Call<ReportDTO>
 
 }

@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import es.crmone.app.common.SingleLiveEvent
 import es.crmone.app.repository.login.User
+import es.crmone.app.repository.report.ReportDTO
 import es.crmone.app.repository.report.ReportRepository
 import es.crmone.app.repository.session.SessionRepository
 
@@ -52,13 +53,12 @@ class ReportViewModel(private val idClient: Int, private val ReportRepository: R
                     if (success) {
                         _closeReport.call()
                     } else {
-                        _closeReport.call()
                         errorReport.value = "Error"
                     }
                 }
 
+
                 override fun onError() {
-                    _closeReport.call()
                     errorReport.value = "Error"
                 }
 
