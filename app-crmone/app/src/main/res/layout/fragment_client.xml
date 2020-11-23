@@ -4,8 +4,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
+
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
@@ -30,12 +40,11 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:text="CLIENTES" />
+                android:text="CLIENTES"
+                android:textSize="18sp" />
 
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
-
 
 
     <androidx.appcompat.widget.SearchView
@@ -46,7 +55,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/appbar"
-        app:queryHint="Buscar CIF o Razón Social" >
+        app:queryHint="Buscar CIF o Razón Social">
 
     </androidx.appcompat.widget.SearchView>
 
@@ -115,18 +124,18 @@
         android:layout_height="wrap_content"
         android:layout_margin="18dp"
         android:contentDescription="NUEVO CLIENTE"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:text="NUEVO CLIENTE"
-        app:icon="@drawable/ic_add"
         android:textColor="@color/white"
-        app:iconTint="@color/white"/>
+        app:icon="@drawable/ic_add"
+        app:iconTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvClients"
-        android:background="@color/backgroundColorFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:background="@color/backgroundColorFragment"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
