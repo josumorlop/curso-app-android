@@ -3,6 +3,7 @@ package es.crmone.app.presentation.client_detail.info
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import es.crmone.app.R
@@ -38,12 +39,15 @@ class ClientInfoFragment : BaseFragment<FragmentClientInfoBinding>(R.layout.frag
 
         _binding = FragmentClientInfoBinding.bind(view)
 
-
+        viewModel.loading.observe(viewLifecycleOwner) { loading ->
+            binding.loading.isVisible = loading
+        }
 
         viewModel.clientinfoLD.observe(viewLifecycleOwner) {
             binding.tvCif.text = it.cif
-
         }
+
+
 
 
 

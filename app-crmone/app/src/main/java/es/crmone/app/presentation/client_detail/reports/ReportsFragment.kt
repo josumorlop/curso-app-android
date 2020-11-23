@@ -2,6 +2,7 @@ package es.crmone.app.presentation.client_detail.reports
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -47,6 +48,9 @@ class ReportsFragment : BaseFragment<FragmentReportsBinding>(R.layout.fragment_r
             }
             pendingsLD.observe(viewLifecycleOwner) { pendings ->
                 viewModelPadreClientDetail.update(pendings)
+            }
+            loading.observe(viewLifecycleOwner) { loading ->
+                binding.loading.isVisible = loading
             }
         }
 

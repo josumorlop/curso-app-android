@@ -46,8 +46,11 @@ class ClientFragment : BaseFragment<FragmentClientBinding>(R.layout.fragment_cli
                     fragmentAnimation().build()
                 )
             }
+            loading.observe(viewLifecycleOwner) { loading ->
+                binding.loading.isVisible = loading
+            }
         }
-//        binding.loading.isVisible = false
+
     }
 
     override fun onResume() {
