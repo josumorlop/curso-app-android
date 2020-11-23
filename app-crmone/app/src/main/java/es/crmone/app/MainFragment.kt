@@ -1,6 +1,8 @@
 package es.crmone.app
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import android.widget.LinearLayout
 import androidx.navigation.fragment.NavHostFragment
@@ -57,7 +59,9 @@ class MainFragment: BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
         }
 
         binding.navView.findViewById<LinearLayout>(R.id.ll_client).setOnClickListener {
-            binding.drawerLayout.close()
+            Handler(Looper.myLooper()!!).postDelayed({
+                binding.drawerLayout.close()
+            }, 200)
             val transaction = childFragmentManager.beginTransaction()
             transaction.hide(navCalendar)
             transaction.hide(navHome)
