@@ -16,11 +16,11 @@ class ReportAdapter(private val calendar: List<CalendarOne>): RecyclerView.Adapt
             set(value) {
                 field = value
                 if (value != null) {
-                    binding.tvItemCalendarHour.text = value.hora
-                    binding.tvItemCalendarDate.text = value.fecha
+
+                    binding.tvItemCalendarDateTimeUser.text = "JOSUÉ MORILLO - "+value.fecha
                     binding.tvItemCalendarComment.text = value.comentarios
-                    binding.tvItemCalendarTag.text = "Pendiente"
-                    binding.tvItemCalendarClient.text = "Wikitic S.L"
+
+
                 }
             }
     }

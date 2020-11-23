@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/backgroundColorFragment">
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvReports"
         android:layout_height="0dp"

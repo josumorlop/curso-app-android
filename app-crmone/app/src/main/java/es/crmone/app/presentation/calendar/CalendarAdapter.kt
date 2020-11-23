@@ -3,9 +3,12 @@ package es.crmone.app.presentation.calendar
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isGone
 import androidx.recyclerview.widget.RecyclerView
 import es.crmone.app.R
 import es.crmone.app.databinding.CellCalendarBinding
+
+import java.lang.StringBuilder
 
 class CalendarAdapter(private val calendar: List<CalendarOne>): RecyclerView.Adapter<CalendarAdapter.CalendarVH>() {
 
@@ -15,11 +18,10 @@ class CalendarAdapter(private val calendar: List<CalendarOne>): RecyclerView.Ada
             set(value) {
                 field = value
                 if (value != null) {
-                    binding.tvItemCalendarHour.text = value.hora
-                    binding.tvItemCalendarDate.text = value.fecha
+
+                    binding.tvItemCalendarDateTimeUser.text = "JOSUÉ MORILLO "+value.fecha
                     binding.tvItemCalendarComment.text = value.comentarios
-                    binding.tvItemCalendarTag.text = "Pendiente"
-                    binding.tvItemCalendarClient.text = "Wikitic S.L"
+
                 }
             }
     }

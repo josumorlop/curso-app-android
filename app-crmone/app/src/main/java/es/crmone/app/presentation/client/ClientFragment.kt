@@ -2,6 +2,7 @@ package es.crmone.app.presentation.client
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.NavHostFragment
@@ -30,6 +31,10 @@ class ClientFragment : BaseFragment<FragmentClientBinding>(R.layout.fragment_cli
         _binding = FragmentClientBinding.bind(view)
 
         setupView()
+        binding.btNuevoCliente.setOnClickListener {
+            Toast.makeText(requireContext(), "No disponible en la BETA", Toast.LENGTH_SHORT).show()
+        }
+
         with(viewModel) {
             clientsLD.observe(viewLifecycleOwner) { listaClientes ->
                 binding.rvClients.adapter = ClientesAdapter(listaClientes, listenerClient)

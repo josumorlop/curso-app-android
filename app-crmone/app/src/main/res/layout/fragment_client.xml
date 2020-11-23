@@ -30,8 +30,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textFontWeight="@android:integer/config_longAnimTime"
-                android:text="CRMONE" />
+                android:textSize="18sp"
+                android:text="CLIENTES" />
 
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
@@ -73,9 +73,7 @@
                 android:layout_width="wrap_content"
 
                 android:layout_height="wrap_content"
-                android:text="+ 50 Líneas"
-                app:closeIcon="@drawable/ic_close"
-                app:closeIconVisible="true" />
+                android:text="+ 50 Líneas" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chip2"
@@ -110,6 +108,19 @@
                 app:closeIcon="@drawable/ic_close" />
         </com.google.android.material.chip.ChipGroup>
     </HorizontalScrollView>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/btNuevoCliente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="18dp"
+        android:contentDescription="NUEVO CLIENTE"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="NUEVO CLIENTE"
+        app:icon="@drawable/ic_add"
+        android:textColor="@color/white"
+        app:iconTint="@color/white"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvClients"
