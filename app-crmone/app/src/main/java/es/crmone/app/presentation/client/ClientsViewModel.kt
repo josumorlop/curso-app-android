@@ -33,7 +33,17 @@ class ClientsViewModel(private val repository: ClientsRepository,
 
             })
         } else {
+            repository.getClientsQuery(busqueda, object: ClientsRepository.ClientsCallback {
+                override fun onSuccess(clients: List<ClientDTO>) {
+                    _loading.value = false
+                    _clientsLD.value = clients.map { Client(it.id, it.cif, it.razonSocial) }
 
+                }
+
+                override fun onError() {
+                    _loading.value = false
+                }
+            })
         }
     }
 
