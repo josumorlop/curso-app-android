@@ -58,7 +58,9 @@ class ClientFragment : BaseFragment<FragmentClientBinding>(R.layout.fragment_cli
         viewModel.loadClients()
     }
     private fun setupView() {
+        binding.etBuscar.setOnCloseListener(this)
         binding.etBuscar.setOnQueryTextListener(this)
+
         binding.myToolbar.setNavigationOnClickListener {
             val mainFragment: MainFragment? = (parentFragment?.parentFragment as? MainFragment)
             mainFragment?.also {
@@ -84,6 +86,7 @@ class ClientFragment : BaseFragment<FragmentClientBinding>(R.layout.fragment_cli
         return true
     }
 
+    //No entra aquí y no se por que xD: REVISAR
     override fun onClose(): Boolean {
         viewModel.cleanSearch()
         return true
