@@ -5,16 +5,39 @@ import android.os.Handler
 import android.os.Looper
 import android.view.View
 import android.widget.LinearLayout
+import android.widget.TextView
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.NavHostFragment
 import es.crmone.app.common.BaseFragment
 import es.crmone.app.databinding.FragmentMainBinding
 
+
+
 class MainFragment: BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
+
+    private val viewModel by viewModels<MainViewModel> {
+        MainVMFactory()
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         _binding = FragmentMainBinding.bind(view)
+
+
+        val dtvName = binding.navView.findViewById<TextView>(R.id.dtv_name)
+        val dtvEmail = binding.navView.findViewById<TextView>(R.id.dtv_email)
+        val dtvCRM = binding.navView.findViewById<TextView>(R.id.dtv_crm)
+
+
+        viewModel.userSessionLD.observe(viewLifecycleOwner) { userSession ->
+            dtvName.text = userSession.profile.name
+            dtvEmail.text = userSession.profile.email
+            dtvCRM.text = userSession.profile.crm+".crmone.es"
+
+        }
+
+
 
         val navHome = NavHostFragment.create(R.navigation.home)
         val navCalendar = NavHostFragment.create(R.navigation.calendar)

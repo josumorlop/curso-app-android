@@ -11,15 +11,19 @@ import es.crmone.app.repository.calendar.CalendarRepository
 
 class CalendarViewModel(private val repository: CalendarRepository) : ViewModel() {
     private val _calendarLD = MutableLiveData<List<CalendarOne>>()
-    val calendarLD: LiveData<List<CalendarOne>> = _calendarLD
+    private val _loading = MutableLiveData<Boolean>()
 
+    val calendarLD: LiveData<List<CalendarOne>> = _calendarLD
+    val loading: LiveData<Boolean> = _loading
 
     init {
         loadCalendar()
     }
     private fun loadCalendar() {
+        _loading.value = true
         repository.getCalendar(object: CalendarRepository.CalendarCallback {
             override fun onSuccess(calendar: List<CalendarDTO>) {
+
                 _calendarLD.value = calendar.map {
                     CalendarOne(
                         it.id,
@@ -29,9 +33,10 @@ class CalendarViewModel(private val repository: CalendarRepository) : ViewModel(
                         it.comentarios
                     )
                 }
+                _loading.value = false
             }
             override fun onError() {
-
+                _loading.value = false
             }
         })
     }

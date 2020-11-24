@@ -11,6 +11,7 @@ import es.crmone.app.repository.session.SessionRepository
 class ClientsViewModel(private val repository: ClientsRepository,
                        private val sessionRepository: SessionRepository) : ViewModel() {
 
+
     private val _loading = MutableLiveData<Boolean>()
     private val _clientsLD = MutableLiveData<List<Client>>()
     private val _goToClientDetailLD = SingleLiveEvent<Int>()

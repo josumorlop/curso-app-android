@@ -19,7 +19,7 @@ class CalendarAdapter(private val calendar: List<CalendarOne>): RecyclerView.Ada
                 field = value
                 if (value != null) {
 
-                    binding.tvItemCalendarDateTimeUser.text = "JOSUÉ MORILLO "+value.fecha
+                    binding.tvItemCalendarDateTimeUser.text = "NOSE "+value.fecha
                     binding.tvItemCalendarComment.text = value.comentarios
 
                 }

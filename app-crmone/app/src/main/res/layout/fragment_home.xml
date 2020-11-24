@@ -30,7 +30,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="CRMONE"
+                android:text="CRMONE APP"
                 android:textSize="18sp" />
 
         </androidx.appcompat.widget.Toolbar>
