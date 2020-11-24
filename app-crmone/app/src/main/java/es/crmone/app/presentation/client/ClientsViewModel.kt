@@ -18,22 +18,27 @@ class ClientsViewModel(private val repository: ClientsRepository,
     val clientsLD: LiveData<List<Client>> = _clientsLD
     val goToClientDetailLD: LiveData<Int> = _goToClientDetailLD
     val loading: LiveData<Boolean> = _loading
-
+    private var busqueda = ""
     fun loadClients() {
         _loading.value = true
-        repository.getClients(object: ClientsRepository.ClientsCallback {
-            override fun onSuccess(clients: List<ClientDTO>) {
-                _loading.value = false
-                _clientsLD.value = clients.map { Client(it.id, it.cif, it.razonSocial) }
-            }
-            override fun onError() {
-                _loading.value = false
-            }
+        if (busqueda.isEmpty()){
+            repository.getClients(object: ClientsRepository.ClientsCallback {
+                override fun onSuccess(clients: List<ClientDTO>) {
+                    _loading.value = false
+                    _clientsLD.value = clients.map { Client(it.id, it.cif, it.razonSocial) }
+                }
+                override fun onError() {
+                    _loading.value = false
+                }
 
-        })
+            })
+        } else {
+
+        }
     }
 
     fun loadClientsQuery(query: String) {
+        busqueda = query
         _loading.value = true
         repository.getClientsQuery(query, object: ClientsRepository.ClientsCallback {
             override fun onSuccess(clients: List<ClientDTO>) {
@@ -50,5 +55,8 @@ class ClientsViewModel(private val repository: ClientsRepository,
     }
     fun seleccionar(client: Client) {
         _goToClientDetailLD.value = client.id
+    }
+    fun cleanSearch() {
+        busqueda = ""
     }
 }

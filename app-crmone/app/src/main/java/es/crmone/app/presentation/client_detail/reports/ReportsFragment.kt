@@ -53,6 +53,10 @@ class ReportsFragment : BaseFragment<FragmentReportsBinding>(R.layout.fragment_r
                 binding.loading.isVisible = loading
             }
         }
+    }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.loadCalendar()
     }
 }

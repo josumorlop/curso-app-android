@@ -15,11 +15,13 @@ class ReportViewModel(private val idClient: Int, private val ReportRepository: R
     private val _askLocation = SingleLiveEvent<Unit>()
     private val _askPermisions = SingleLiveEvent<Unit>()
     private val _closeReport = SingleLiveEvent<Unit>()
+    private val _showErrorLocation = SingleLiveEvent<Unit>()
 
     val askLocation: LiveData<Unit> = _askLocation
     val askPermisions: LiveData<Unit> = _askPermisions
     val closeReport: LiveData<Unit> = _closeReport
     val errorReport = SingleLiveEvent<String>() // LiveData
+    val showErrorLocation: LiveData<Unit> = _showErrorLocation // LiveData
 
 
 
@@ -39,7 +41,9 @@ class ReportViewModel(private val idClient: Int, private val ReportRepository: R
         queryTemporal(idClient, user, observations, location.latitute, location.longitude, location.accuracy)
 
     }
-
+    fun locationIsDisable() {
+        _showErrorLocation.call()
+    }
     fun userDenyPermissions() {
 
     }

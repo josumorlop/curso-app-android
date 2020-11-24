@@ -62,7 +62,7 @@
                 android:layout_height="200dp"
                 android:layout_margin="20dp"
                 android:contentDescription=""
-                android:background="@drawable/imagen_login" />
+                android:src="@drawable/imagen_login" />
 
             <LinearLayout
                 android:layout_width="match_parent"

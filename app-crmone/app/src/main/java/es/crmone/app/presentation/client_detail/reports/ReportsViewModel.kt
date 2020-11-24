@@ -17,10 +17,6 @@ class ReportsViewModel(private val idClient: Int, private val repository: Calend
     val pendingsLD: LiveData<Int> = _pendingsLD
     val loading: LiveData<Boolean> = _loading
 
-
-    init {
-        loadCalendar()
-    }
     fun loadCalendar() {
         _loading.value = true
         repository.getCalendar(idClient, object : CalendarRepository.CalendarCallback {

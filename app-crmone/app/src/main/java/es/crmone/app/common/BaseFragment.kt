@@ -2,6 +2,7 @@ package es.crmone.app.common
 
 import androidx.activity.addCallback
 import androidx.annotation.LayoutRes
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavOptions
@@ -32,6 +33,14 @@ open class BaseFragment<T: ViewBinding>(@LayoutRes contentLayoutId: Int): Fragme
             .setExitAnim(R.anim.exit)
             .setPopEnterAnim(R.anim.pop_enter)
             .setPopExitAnim(R.anim.pop_exit)
+    }
+    fun showAlertDialog(dialogBuilder: AlertDialog.Builder.() -> Unit) {
+        context?.also {
+            val builder = AlertDialog.Builder(it)
+            builder.dialogBuilder()
+            val dialog = builder.create()
+            dialog.show()
+        }
     }
 
 }

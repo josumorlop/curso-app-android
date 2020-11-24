@@ -18,7 +18,7 @@ import es.crmone.app.presentation.client_detail.ClientDetailFragmentDirections
 import es.crmone.app.repository.clientes.RemoteClientsRepository
 
 
-class ClientFragment : BaseFragment<FragmentClientBinding>(R.layout.fragment_client), androidx.appcompat.widget.SearchView.OnQueryTextListener {
+class ClientFragment : BaseFragment<FragmentClientBinding>(R.layout.fragment_client), SearchView.OnQueryTextListener, SearchView.OnCloseListener {
 
     private val viewModel by viewModels<ClientsViewModel> { ClientVMFactory() }
 
@@ -81,6 +81,11 @@ class ClientFragment : BaseFragment<FragmentClientBinding>(R.layout.fragment_cli
     }
 
     override fun onQueryTextChange(newText: String?): Boolean {
+        return true
+    }
+
+    override fun onClose(): Boolean {
+        viewModel.cleanSearch()
         return true
     }
 
