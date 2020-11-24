@@ -86,7 +86,6 @@ class ClientFragment : BaseFragment<FragmentClientBinding>(R.layout.fragment_cli
         return true
     }
 
-    //No entra aquí y no se por que xD: REVISAR
     override fun onClose(): Boolean {
         viewModel.cleanSearch()
         return true
