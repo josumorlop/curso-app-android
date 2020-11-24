@@ -36,7 +36,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textField"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -44,7 +44,7 @@
         android:layout_marginEnd="24dp"
         android:hint="Observaciones"
         app:counterEnabled="true"
-        app:counterMaxLength="60"
+        app:counterMaxLength="255"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/appbar">
@@ -69,7 +69,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
         android:text="CHECK IN"
-        app:icon="@drawable/ic_add"
+        app:icon="@drawable/ic_location"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textField" />
 
