@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -60,10 +61,10 @@ class ReportFragment : BaseFragment<FragmentReportBinding>(R.layout.fragment_rep
                     addPositiveButton {
                         //programar lo que que sea
                     }
-                    addNegativeButton("No estoy de acuerdo") {
-                        System.exit(0)
-                    }
                 }
+            }
+            loading.observe(viewLifecycleOwner) { loading ->
+                binding.loading.isVisible = loading
             }
         }
     }
@@ -168,6 +169,8 @@ class ReportFragment : BaseFragment<FragmentReportBinding>(R.layout.fragment_rep
         } else {
             viewModel.permisionsNotGranted()
         }
+
+
     }
 
 }

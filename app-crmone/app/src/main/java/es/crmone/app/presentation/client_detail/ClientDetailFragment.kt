@@ -43,8 +43,8 @@ class ClientDetailFragment : BaseFragment<FragmentClientDetailBinding>(R.layout.
                         tab.text = "Visitas"
                         tab.setIcon(R.drawable.ic_calendar)
 
-                        val badge = tab.getOrCreateBadge()
-                        badge.number = 3
+                        /*val badge = tab.getOrCreateBadge()
+                        badge.number = 3*/
 
                     }
                     1 -> {
