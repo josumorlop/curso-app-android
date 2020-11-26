@@ -57,11 +57,14 @@
             <!-- Media -->
 
 
+
+            ,.,
+
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="200dp"
-                android:layout_margin="20dp"
-                android:contentDescription=""
+                android:layout_height="160dp"
+                android:layout_margin="0dp"
+                android:contentDescription="20dp"
                 android:src="@drawable/imagen_login" />
 
             <LinearLayout
@@ -134,30 +137,6 @@
                     android:layout_margin="20dp"
                     android:contentDescription=""
                     app:srcCompat="@drawable/logo_crmone" />
-
-
-                <!-- Title, secondary and supporting text -->
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-
-                    <TextView
-                        android:layout_centerHorizontal="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="josue.morillo@wikitic.es"
-                        android:drawableLeft="@drawable/ic_email"
-                        android:drawablePadding="12dp"
-                        android:textAppearance="?attr/textAppearanceBody2"
-                        android:textSize="18sp"
-                        android:textColor="@color/colorPrimary" />
-
-                </RelativeLayout>
-
-
-
 
             </LinearLayout>
 

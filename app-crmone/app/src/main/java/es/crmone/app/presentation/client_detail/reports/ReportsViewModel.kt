@@ -22,7 +22,7 @@ class ReportsViewModel(private val idClient: Int, private val repository: Calend
         repository.getCalendar(idClient, object : CalendarRepository.CalendarCallback {
             override fun onSuccess(calendar: List<CalendarDTO>) {
                 _loading.value = false
-                _reportsLD.value = calendar.map { CalendarOne(it.id, it.fecha, it.hora, it.horaFin, it.comentarios) }
+                _reportsLD.value = calendar.map { CalendarOne(it.id, it.cliente, it.usuarioRegistro, it.checkin, it.fecha, it.hora, it.horaFin, it.comentarios) }
                 _pendingsLD.value = 4
             }
             override fun onError() {

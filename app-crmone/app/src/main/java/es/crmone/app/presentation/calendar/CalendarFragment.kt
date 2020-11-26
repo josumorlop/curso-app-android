@@ -52,4 +52,15 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(R.layout.fragment
 
     }
 
+
+    override fun onPause() {
+        super.onPause()
+
+        viewModel.loadCalendar()
+    }
+
+
+
+
+
 }

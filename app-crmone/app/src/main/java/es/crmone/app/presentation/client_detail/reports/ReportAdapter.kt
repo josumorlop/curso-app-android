@@ -3,6 +3,7 @@ package es.crmone.app.presentation.client_detail.reports
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import es.crmone.app.R
 import es.crmone.app.databinding.CellCalendarBinding
@@ -17,8 +18,24 @@ class ReportAdapter(private val calendar: List<CalendarOne>): RecyclerView.Adapt
                 field = value
                 if (value != null) {
 
-                    binding.tvItemCalendarDateTimeUser.text = "JOSUÉ MORILLO - "+value.fecha
+                    binding.tvItemCalendarDateTimeUser.text = value.usuarioRegistro.nombre+" "+value.usuarioRegistro.apellido1+" · "+value.fecha
+
                     binding.tvItemCalendarComment.text = value.comentarios
+                    if (value.comentarios.isNullOrEmpty())
+                        binding.tvItemCalendarComment.isVisible = false
+
+                    binding.tvItemCalendarCheckInHour.text = value.checkin
+                    if (value.checkin.isNullOrEmpty()) {
+                        binding.ivIconLocation.isVisible = false
+                        binding.tvItemCalendarCheckInHour.isVisible = false
+                        binding.llCheckin.isVisible = false
+                    }
+
+
+
+
+
+
 
 
                 }
@@ -34,3 +51,5 @@ class ReportAdapter(private val calendar: List<CalendarOne>): RecyclerView.Adapt
     }
     override fun getItemCount() = calendar.size
 }
+
+

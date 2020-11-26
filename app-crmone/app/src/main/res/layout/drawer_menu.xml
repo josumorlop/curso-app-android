@@ -88,7 +88,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Cliente"
+                android:text="Clientes"
                 android:textColor="@color/colorPrimary"
                 android:textSize="16sp" />
 

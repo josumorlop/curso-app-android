@@ -19,7 +19,7 @@ class CalendarViewModel(private val repository: CalendarRepository) : ViewModel(
     init {
         loadCalendar()
     }
-    private fun loadCalendar() {
+    fun loadCalendar() {
         _loading.value = true
         repository.getCalendar(object: CalendarRepository.CalendarCallback {
             override fun onSuccess(calendar: List<CalendarDTO>) {
@@ -27,6 +27,9 @@ class CalendarViewModel(private val repository: CalendarRepository) : ViewModel(
                 _calendarLD.value = calendar.map {
                     CalendarOne(
                         it.id,
+                        it.cliente,
+                        it.usuarioRegistro,
+                        it.checkin,
                         it.fecha,
                         it.hora,
                         it.horaFin,
