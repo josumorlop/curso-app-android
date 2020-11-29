@@ -25,6 +25,9 @@
         <argument
             android:name="idClient"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_client_to_checkOut"
+            app:destination="@id/checkOutFragment" />
     </fragment>
     <fragment
         android:id="@+id/reportFragment"
@@ -35,4 +38,9 @@
             android:name="idClient"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/checkOutFragment"
+        android:name="es.crmone.app.presentation.check_out.CheckOutFragment"
+        android:label="fragment_check_out"
+        tools:layout="@layout/fragment_check_out" />
 </navigation>
