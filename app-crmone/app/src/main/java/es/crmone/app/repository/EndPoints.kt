@@ -35,4 +35,7 @@ interface EndPoints {
     @POST("report")
     fun insertReport(@Body body: ReportBodyRequest): Call<ReportDTO>
 
+    @POST("checkout")
+    fun insertCheckOut(@Body body: CheckOutBodyRequest): Call<ChecktOutDTO>
+
 }

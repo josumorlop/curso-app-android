@@ -3,6 +3,7 @@ package es.crmone.app.presentation.calendar
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import es.crmone.app.common.SingleLiveEvent
 import es.crmone.app.repository.calendar.CalendarDTO
 
 import es.crmone.app.repository.calendar.CalendarRepository
@@ -11,9 +12,11 @@ import es.crmone.app.repository.calendar.CalendarRepository
 
 class CalendarViewModel(private val repository: CalendarRepository) : ViewModel() {
     private val _calendarLD = MutableLiveData<List<CalendarOne>>()
+    private val _goToCheckOut = SingleLiveEvent<Int>()
     private val _loading = MutableLiveData<Boolean>()
 
     val calendarLD: LiveData<List<CalendarOne>> = _calendarLD
+    val goToCheckOut: LiveData<Int> = _goToCheckOut
     val loading: LiveData<Boolean> = _loading
 
     init {
@@ -42,5 +45,8 @@ class CalendarViewModel(private val repository: CalendarRepository) : ViewModel(
                 _loading.value = false
             }
         })
+    }
+    fun seleccionar(calendar: CalendarOne) {
+        _goToCheckOut.value = calendar.id
     }
 }

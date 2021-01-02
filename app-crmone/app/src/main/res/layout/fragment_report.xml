@@ -54,7 +54,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="24dp"
-        android:hint="Observaciones"
+        android:hint="Comentarios..."
         app:counterEnabled="true"
         app:counterMaxLength="255"
         app:layout_constraintEnd_toEndOf="parent"

@@ -9,5 +9,19 @@
         android:id="@+id/calendarFragment"
         android:name="es.crmone.app.presentation.calendar.CalendarFragment"
         android:label="CalendarFragment"
-        tools:layout="@layout/fragment_calendar"/>
+        tools:layout="@layout/fragment_calendar">
+        <action
+            android:id="@+id/action_calendar_to_checkout"
+            app:destination="@id/checkOutFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/checkOutFragment"
+        android:name="es.crmone.app.presentation.check_out.CheckOutFragment"
+        android:label="fragment_check_out"
+        tools:layout="@layout/fragment_check_out">
+        <argument
+            android:name="idCalendar"
+            app:argType="integer" />
+    </fragment>
 </navigation>
