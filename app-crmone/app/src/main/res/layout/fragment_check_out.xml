@@ -73,7 +73,7 @@
 
 
     <Button
-        android:id="@+id/btCheckIn"
+        android:id="@+id/btCheckOut"
         style="@style/Widget.MaterialComponents.Button.Icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

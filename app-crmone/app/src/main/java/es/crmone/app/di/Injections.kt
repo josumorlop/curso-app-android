@@ -1,6 +1,7 @@
 package es.crmone.app.di
 
 import es.crmone.app.repository.calendar.RemoteCalendarRepository
+import es.crmone.app.repository.checkout.RemoteCheckOutRepository
 import es.crmone.app.repository.client_info.RemoteClientInfoRepository
 import es.crmone.app.repository.clientes.RemoteClientsRepository
 import es.crmone.app.repository.login.RemoteLoginRepository
@@ -14,4 +15,5 @@ object Injections {
     val clientInfoRepository by lazy { RemoteClientInfoRepository() }
     val sessionRepository by lazy { SessionRepositoryImp() }
     val reportRepository by lazy { RemoteReportRepository() }
+    val checkOutRepository by lazy { RemoteCheckOutRepository() }
 }
