@@ -2,6 +2,7 @@ package es.crmone.app.repository.checkout
 
 import es.crmone.app.repository.EndPoints
 import es.crmone.app.repository.RetrofitService
+import es.crmone.app.repository.login.User
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -12,13 +13,14 @@ class RemoteCheckOutRepository(private val api: EndPoints = RetrofitService.endp
     CheckOutRepository {
     override fun insertCheckOut(
         idCalendar: Int,
+        user: User,
         observations: String,
         latitute: Double,
         longitude: Double,
         accuracy: Float,
         callback: CheckOutRepository.CheckOutCallback
     ) {
-        val bodyRequest = CheckOutBodyRequest(idCalendar, observations, latitute, longitude, accuracy)
+        val bodyRequest = CheckOutBodyRequest(idCalendar, user, observations, latitute, longitude, accuracy)
         api.insertCheckOut(bodyRequest).enqueue(object: Callback<CheckOutDTO> {
             override fun onResponse(call: Call<CheckOutDTO>, response: Response<CheckOutDTO>) {
 
