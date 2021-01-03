@@ -70,6 +70,14 @@
                 android:textColor="#444"
                 android:textSize="18sp" />
 
+            <TextView
+                android:id="@+id/tvItemCalendarComment2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Comentarios2..."
+                android:textColor="#444"
+                android:textSize="18sp" />
+
             <LinearLayout
 
                 android:id="@+id/ll_checkin"
@@ -89,6 +97,23 @@
 
                 <TextView
                     android:id="@+id/tvItemCalendarCheckInHour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/ivIconLocation"
+                    android:text="00:00"
+                    android:textSize="12sp"
+                    app:tint="@color/colorSecondary" />
+
+                <TextView
+                    android:id="@+id/tvItemCalendarSeparador"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="-" />
+
+                <TextView
+                    android:id="@+id/tvItemCalendarCheckOutHour"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignStart="@+id/ivIconLocation"

@@ -34,11 +34,21 @@ class CalendarAdapter(private val calendar: List<CalendarOne>, val listener: Che
                     if (value.comentarios.isNullOrEmpty())
                         binding.tvItemCalendarComment.isVisible = false
 
+                    binding.tvItemCalendarComment2.text = value.comentarios2
+                    if (value.comentarios2.isNullOrEmpty())
+                        binding.tvItemCalendarComment.isVisible = false
+
                     binding.tvItemCalendarCheckInHour.text = value.checkin
                     if (value.checkin.isNullOrEmpty()) {
                         binding.ivIconLocation.isVisible = false
                         binding.tvItemCalendarCheckInHour.isVisible = false
                         binding.llCheckin.isVisible = false
+                    }
+
+                    binding.tvItemCalendarCheckOutHour.text = value.checkout
+                    if (value.checkout.isNullOrEmpty()) {
+                        binding.tvItemCalendarSeparador.isVisible = false
+                        binding.tvItemCalendarCheckOutHour.isVisible = false
                     }
 
                     binding.tvItemCalendarClient.isVisible = true

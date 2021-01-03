@@ -9,8 +9,10 @@ class CalendarDTO (
     val cliente: CalClient,
     val usuarioRegistro: CalUser,
     val checkin: String?,
+    val checkout: String?,
     val fecha: String,
     val hora: String,
     val horaFin: String?,
-    val comentarios: String?
+    val comentarios: String?,
+    val comentarios2: String?
 )

@@ -22,7 +22,7 @@ import es.crmone.app.common.addPositiveButton
 import es.crmone.app.databinding.FragmentCheckOutBinding
 
 
-class CheckOutFragment : BaseFragment<FragmentCheckOutBinding>(R.layout.fragment_report) {
+class CheckOutFragment : BaseFragment<FragmentCheckOutBinding>(R.layout.fragment_check_out) {
 
     private val inputArgs: CheckOutFragmentArgs by navArgs()
 
