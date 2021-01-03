@@ -38,7 +38,8 @@ class CalendarViewModel(private val repository: CalendarRepository) : ViewModel(
                         it.hora,
                         it.horaFin,
                         it.comentarios,
-                        it.comentarios2
+                        it.comentarios2,
+                        it.permisoCheckOut
                     )
                 }
                 _loading.value = false

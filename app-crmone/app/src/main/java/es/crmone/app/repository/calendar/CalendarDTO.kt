@@ -14,5 +14,6 @@ class CalendarDTO (
     val hora: String,
     val horaFin: String?,
     val comentarios: String?,
-    val comentarios2: String?
+    val comentarios2: String?,
+    val permisoCheckOut: Boolean
 )

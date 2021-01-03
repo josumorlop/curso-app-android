@@ -36,7 +36,7 @@ class CalendarAdapter(private val calendar: List<CalendarOne>, val listener: Che
 
                     binding.tvItemCalendarComment2.text = value.comentarios2
                     if (value.comentarios2.isNullOrEmpty())
-                        binding.tvItemCalendarComment.isVisible = false
+                        binding.tvItemCalendarComment2.isVisible = false
 
                     binding.tvItemCalendarCheckInHour.text = value.checkin
                     if (value.checkin.isNullOrEmpty()) {
@@ -53,6 +53,9 @@ class CalendarAdapter(private val calendar: List<CalendarOne>, val listener: Che
 
                     binding.tvItemCalendarClient.isVisible = true
                     binding.tvItemCalendarClient.text = value.cliente.razonSocial+" "+value.cliente.cif
+
+                    if (value.permisoCheckOut)
+                        binding.btCheckOut.isVisible = true
 
                     binding.btCheckOut.setOnClickListener {
                         listener(value)

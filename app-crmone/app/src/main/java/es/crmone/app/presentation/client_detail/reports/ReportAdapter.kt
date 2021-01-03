@@ -9,9 +9,11 @@ import es.crmone.app.R
 import es.crmone.app.databinding.CellCalendarBinding
 import es.crmone.app.presentation.calendar.CalendarOne
 
-class ReportAdapter(private val calendar: List<CalendarOne>): RecyclerView.Adapter<ReportAdapter.CalendarVH>() {
+typealias CheckoutListener = (calendar: CalendarOne) -> Unit
 
-    class CalendarVH internal constructor(itemView: View): RecyclerView.ViewHolder(itemView) {
+class ReportAdapter(private val calendar: List<CalendarOne>, val listener: CheckoutListener): RecyclerView.Adapter<ReportAdapter.CalendarVH>() {
+
+    class CalendarVH internal constructor(itemView: View, val listener: CheckoutListener): RecyclerView.ViewHolder(itemView) {
         private val binding = CellCalendarBinding.bind(itemView)
         var calendar: CalendarOne? = null
             set(value) {
@@ -24,6 +26,10 @@ class ReportAdapter(private val calendar: List<CalendarOne>): RecyclerView.Adapt
                     if (value.comentarios.isNullOrEmpty())
                         binding.tvItemCalendarComment.isVisible = false
 
+                    binding.tvItemCalendarComment2.text = value.comentarios2
+                    if (value.comentarios2.isNullOrEmpty())
+                        binding.tvItemCalendarComment2.isVisible = false
+
                     binding.tvItemCalendarCheckInHour.text = value.checkin
                     if (value.checkin.isNullOrEmpty()) {
                         binding.ivIconLocation.isVisible = false
@@ -31,11 +37,21 @@ class ReportAdapter(private val calendar: List<CalendarOne>): RecyclerView.Adapt
                         binding.llCheckin.isVisible = false
                     }
 
+                    binding.tvItemCalendarCheckOutHour.text = value.checkout
+                    if (value.checkout.isNullOrEmpty()) {
+                        binding.tvItemCalendarSeparador.isVisible = false
+                        binding.tvItemCalendarCheckOutHour.isVisible = false
+                    }
 
+                    binding.tvItemCalendarClient.isVisible = true
+                    binding.tvItemCalendarClient.text = value.cliente.razonSocial+" "+value.cliente.cif
 
+                    if (value.permisoCheckOut)
+                        binding.btCheckOut.isVisible = true
 
-
-
+                    binding.btCheckOut.setOnClickListener {
+                        listener(value)
+                    }
 
 
                 }
@@ -44,7 +60,7 @@ class ReportAdapter(private val calendar: List<CalendarOne>): RecyclerView.Adapt
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CalendarVH {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.cell_calendar, parent, false)
-        return CalendarVH(view)
+        return CalendarVH(view, listener)
     }
     override fun onBindViewHolder(holder: CalendarVH, position: Int) {
         holder.calendar = calendar[position]

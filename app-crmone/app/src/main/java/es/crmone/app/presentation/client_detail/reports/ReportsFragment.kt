@@ -5,10 +5,13 @@ import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import es.crmone.app.R
 import es.crmone.app.common.BaseFragment
 import es.crmone.app.databinding.FragmentReportsBinding
+import es.crmone.app.presentation.calendar.CalendarFragmentDirections
+import es.crmone.app.presentation.calendar.CalendarOne
 import es.crmone.app.presentation.client_detail.ClientDetailViewModel
 import es.crmone.app.repository.calendar.RemoteCalendarRepository
 
@@ -26,6 +29,12 @@ class ReportsFragment : BaseFragment<FragmentReportsBinding>(R.layout.fragment_r
     private val idClient by lazy {
         arguments?.getInt(ReportsFragment.idClient)?:throw Exception("idClient not found")
     }
+
+    //Está bien????
+    private val listenerCheckOut = { calendar: CalendarOne ->
+        viewModel.seleccionar(calendar)
+    }
+
     private val viewModel by viewModels<ReportsViewModel>() {
         ReportsVMFactory(idClient)
     }
@@ -43,11 +52,18 @@ class ReportsFragment : BaseFragment<FragmentReportsBinding>(R.layout.fragment_r
         }
         with(viewModel) {
             reportsLD.observe(viewLifecycleOwner) {
-                adapter = ReportAdapter(it)
+                adapter = ReportAdapter(it, listenerCheckOut)
                 binding.rvReports.adapter = adapter
             }
             pendingsLD.observe(viewLifecycleOwner) { pendings ->
                 viewModelPadreClientDetail.update(pendings)
+            }
+            goToCheckOut.observe(viewLifecycleOwner) { idCalendar ->
+                /*findNavController().navigate(
+                    CalendarFragmentDirections.actionCalendarToCheckout(idCalendar),
+                    fragmentAnimation().build()
+                )*/
+
             }
             loading.observe(viewLifecycleOwner) { loading ->
                 binding.loading.isVisible = loading
