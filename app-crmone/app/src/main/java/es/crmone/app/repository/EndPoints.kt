@@ -3,6 +3,8 @@ package es.crmone.app.repository
 import es.crmone.app.repository.calendar.CalendarDTO
 import es.crmone.app.repository.checkout.CheckOutBodyRequest
 import es.crmone.app.repository.checkout.CheckOutDTO
+import es.crmone.app.repository.client_create.ClientCreateBodyRequest
+import es.crmone.app.repository.client_create.ClientCreateDTO
 import es.crmone.app.repository.client_info.ClientInfoDTO
 import es.crmone.app.repository.clientes.ClientDTO
 import es.crmone.app.repository.login.LoginBodyRequest
@@ -39,5 +41,8 @@ interface EndPoints {
 
     @POST("checkout")
     fun insertCheckOut(@Body body: CheckOutBodyRequest): Call<CheckOutDTO>
+
+    @POST("clientCreate")
+    fun insertClient(@Body body: ClientCreateBodyRequest): Call<ClientCreateDTO>
 
 }

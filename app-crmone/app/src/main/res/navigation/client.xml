@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_to_clientDetail"
             app:destination="@id/clientDetailFragment" />
+        <action
+            android:id="@+id/action_client_to_clientCreate"
+            app:destination="@id/clientCreateFragment" />
     </fragment>
     <fragment
         android:id="@+id/clientDetailFragment"
@@ -42,5 +45,13 @@
         android:id="@+id/checkOutFragment"
         android:name="es.crmone.app.presentation.check_out.CheckOutFragment"
         android:label="fragment_check_out"
-        tools:layout="@layout/fragment_check_out" />
+        tools:layout="@layout/fragment_check_out">
+        <argument
+            android:name="idCalendar"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/clientCreateFragment"
+        android:name="es.crmone.app.presentation.client_create.ClientCreateFragment"
+        android:label="ClientCreateFragment" />
 </navigation>

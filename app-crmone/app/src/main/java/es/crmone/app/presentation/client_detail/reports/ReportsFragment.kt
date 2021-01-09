@@ -12,10 +12,12 @@ import es.crmone.app.common.BaseFragment
 import es.crmone.app.databinding.FragmentReportsBinding
 import es.crmone.app.presentation.calendar.CalendarFragmentDirections
 import es.crmone.app.presentation.calendar.CalendarOne
+import es.crmone.app.presentation.client_detail.ClientDetailFragmentDirections
 import es.crmone.app.presentation.client_detail.ClientDetailViewModel
 import es.crmone.app.repository.calendar.RemoteCalendarRepository
 
 class ReportsFragment : BaseFragment<FragmentReportsBinding>(R.layout.fragment_reports) {
+
     companion object {
         private const val idClient = "idClient"
         fun create(idClient: Int): ReportsFragment {
@@ -59,11 +61,10 @@ class ReportsFragment : BaseFragment<FragmentReportsBinding>(R.layout.fragment_r
                 viewModelPadreClientDetail.update(pendings)
             }
             goToCheckOut.observe(viewLifecycleOwner) { idCalendar ->
-                /*findNavController().navigate(
-                    CalendarFragmentDirections.actionCalendarToCheckout(idCalendar),
+                findNavController().navigate(
+                    ClientDetailFragmentDirections.actionClientToCheckOut(idCalendar),
                     fragmentAnimation().build()
-                )*/
-
+                )
             }
             loading.observe(viewLifecycleOwner) { loading ->
                 binding.loading.isVisible = loading

@@ -14,6 +14,7 @@ import es.crmone.app.MainFragment
 import es.crmone.app.common.BaseFragment
 import es.crmone.app.R
 import es.crmone.app.databinding.FragmentClientBinding
+import es.crmone.app.presentation.client_detail.ClientDetailFragment
 import es.crmone.app.presentation.client_detail.ClientDetailFragmentDirections
 import es.crmone.app.repository.clientes.RemoteClientsRepository
 
@@ -33,7 +34,11 @@ class ClientFragment : BaseFragment<FragmentClientBinding>(R.layout.fragment_cli
 
         setupView()
         binding.btNuevoCliente.setOnClickListener {
-            Toast.makeText(requireContext(), "No disponible en la BETA", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(requireContext(), "No disponible en la BETA", Toast.LENGTH_SHORT).show()
+            findNavController().navigate(
+                ClientFragmentDirections.actionClientToClientCreate(),
+                fragmentAnimation().build()
+            )
         }
 
         with(viewModel) {
