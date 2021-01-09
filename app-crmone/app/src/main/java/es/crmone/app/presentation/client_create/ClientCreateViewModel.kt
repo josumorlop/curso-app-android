@@ -11,39 +11,43 @@ import es.crmone.app.repository.session.SessionRepository
 
 class ClientCreateViewModel(private val ClientCreateRepository: ClientCreateRepository, private val sessionRepository: SessionRepository) : ViewModel() {
 
-    //private val _loading = MutableLiveData<Boolean>()
+    private val _loading = MutableLiveData<Boolean>()
     private  val _successInsert = MutableLiveData<Boolean>()
+    private val _closeAndBack = SingleLiveEvent<Unit>()
 
-    //val loading: LiveData<Boolean> = _loading
+    val loading: LiveData<Boolean> = _loading
     val successInsert: LiveData<Boolean> = _successInsert
+    val closeAndBack: LiveData<Unit> = _closeAndBack
 
-    fun insertClient(cif: String, literal: String) {
+    fun insertClient(cif: String, razonSocial: String) {
 
         val user = sessionRepository.getUser()
-        //query(user, cif, literal)
-        _successInsert.value = false
+        query(user, cif, razonSocial)
+        //_successInsert.value = false
 
     }
 
     private fun query(user: User?, cif: String, razonSocial: String) {
 
         if (user != null) {
+            _loading.value = true
             ClientCreateRepository.insertClient(user, cif, razonSocial, object : ClientCreateRepository.ClientCreateCallback  {
                 override fun onSuccess(success: Boolean) {
                     if (success) {
                         _successInsert.value = success
+                        _closeAndBack.call()
                         //si se ha registrado correctamente...
                     } else {
                         //si el CIF es EXISTENTE...
                         _successInsert.value = false
                     }
-                    //_loading.value = false
+                    _loading.value = false
 
                 }
 
                 override fun onError() {
                     _successInsert.value = false
-                    //_loading.value = true
+                    _loading.value = true
                 }
 
             })
