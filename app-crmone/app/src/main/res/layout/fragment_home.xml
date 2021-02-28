@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundColorFragment">
-
 
 
     <com.google.android.material.appbar.AppBarLayout
@@ -37,16 +37,15 @@
     </com.google.android.material.appbar.AppBarLayout>
 
 
-
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:checkable="false"
-        app:cardElevation="10dp"
         android:focusable="true"
         app:cardCornerRadius="4dp"
+        app:cardElevation="10dp"
         app:layout_constraintTop_toBottomOf="@+id/appbar">
 
         <LinearLayout
@@ -55,7 +54,6 @@
             android:orientation="vertical">
 
             <!-- Media -->
-
 
 
             ,.,
@@ -78,8 +76,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="CRMONE APP"
-                    android:textSize="24sp"
-                    android:textAppearance="?attr/textAppearanceHeadline6" />
+                    android:textAppearance="?attr/textAppearanceHeadline6"
+                    android:textSize="24sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -95,10 +93,8 @@
                     android:layout_marginTop="14dp"
                     android:text="Aplicación para el reporte de actividad con Geolocalización."
                     android:textAppearance="?attr/textAppearanceBody2"
-                    android:textSize="18sp"
-                    android:textColor="@color/colorPrimaryVariant" />
-
-
+                    android:textColor="@color/colorPrimaryVariant"
+                    android:textSize="18sp" />
 
 
             </LinearLayout>
@@ -115,9 +111,9 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:checkable="false"
-        app:cardElevation="10dp"
         android:focusable="true"
         app:cardCornerRadius="4dp"
+        app:cardElevation="10dp"
         app:layout_constraintTop_toBottomOf="@+id/card">
 
         <LinearLayout
@@ -131,6 +127,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="16dp">
+
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
@@ -145,6 +142,16 @@
 
     </com.google.android.material.card.MaterialCardView>
 
+    <Button
+        android:id="@+id/callLogBT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
