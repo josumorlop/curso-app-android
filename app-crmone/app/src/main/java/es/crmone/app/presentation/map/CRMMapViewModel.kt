@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.google.android.gms.maps.model.LatLng
+import es.crmone.app.repository.map.CRMMapDTO
 import es.crmone.app.repository.map.CRMMapRepository
 import es.crmone.app.repository.session.SessionRepository
 import kotlinx.coroutines.flow.flow
@@ -17,21 +18,35 @@ sealed class PositionsOp {
 }
 
 
-class CRMMapViewModel (private val CRMMapRepository: CRMMapRepository, private  val sessionRepository: SessionRepository): ViewModel() {
+
+class CRMMapViewModel (private val repository: CRMMapRepository, private  val sessionRepository: SessionRepository): ViewModel() {
 
     fun getPositons(): LiveData<PositionsOp> {
         return flow {
             //inicio llamada
+            repository.getCheckPoint(object: CRMMapRepository.CRMMapCallBack {
+                override fun onSuccess(points: List<CRMMapDTO>) {
+
+                    val locations = points.map { CrmLocation(it.title, it.getLocation()) }
+
+                    val response = PositionsOp.Success(locations)
+                    emit(response)
+
+                }
+            })
+
+
 //            emit(PositionsOp.Loading)
+
             //fin llamada
 
             //Respuesta del servicio que te devuelte las posiciones
-            val locations: List<CrmLocation> = listOf(
+            /*val locations: List<CrmLocation> = listOf(
                 CrmLocation("Casa Ricardo", LatLng(40.4297934,-3.7123437)),
                 CrmLocation("Go fit", LatLng(40.4410008,-3.7108467)),
             )
             val response = PositionsOp.Success(locations)
-            emit(response)
+            emit(response)*/
         }.asLiveData(viewModelScope.coroutineContext)
     }
 }
