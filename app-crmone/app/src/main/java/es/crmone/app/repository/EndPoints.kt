@@ -13,6 +13,7 @@ import es.crmone.app.repository.map.CRMMapDTO
 import es.crmone.app.repository.report.ReportBodyRequest
 import es.crmone.app.repository.report.ReportDTO
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
@@ -47,6 +48,6 @@ interface EndPoints {
     fun insertClient(@Body body: ClientCreateBodyRequest): Call<ClientCreateDTO>
 
     @GET("checkPoint")
-    fun getCheckPoint(): Call<List<CRMMapDTO>>
+    suspend fun getCheckPoint(): Response<List<CRMMapDTO>>
 
 }

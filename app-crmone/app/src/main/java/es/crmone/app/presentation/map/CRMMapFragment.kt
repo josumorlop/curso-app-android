@@ -19,7 +19,9 @@ import es.crmone.app.databinding.FragmentMapBinding
 class CRMMapFragment : BaseFragment<FragmentMapBinding>(R.layout.fragment_map), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
-    private val viewModel by viewModels<CRMMapViewModel>()
+    private val viewModel by viewModels<CRMMapViewModel> {
+        CRMMapVMFactory()
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -53,19 +55,21 @@ class CRMMapFragment : BaseFragment<FragmentMapBinding>(R.layout.fragment_map), 
 
                 }
                 is PositionsOp.Success -> {
-                    val madrid = LatLng(40.4178446,-3.7153383)
-                    val cameraUpdate = CameraUpdateFactory.newCameraPosition(
-                        CameraPosition.builder().
-                        target(madrid).
-                        zoom(13f).
-                        build()
-                    )
-                    mMap.moveCamera(cameraUpdate)
                     operation.locations.forEach {
                         mMap.addMarker(MarkerOptions()
                             .position(it.latLng)
                             .title(it.title))
                     }
+                    operation.locations.firstOrNull()?.also { primero ->
+                        val cameraUpdate = CameraUpdateFactory.newCameraPosition(
+                            CameraPosition.builder().
+                            target(primero.latLng).
+                            zoom(13f).
+                            build()
+                        )
+                        mMap.moveCamera(cameraUpdate)
+                    }
+
                 }
             }
         }

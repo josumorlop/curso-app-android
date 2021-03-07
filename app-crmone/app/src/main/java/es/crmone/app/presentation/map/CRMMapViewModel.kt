@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.google.android.gms.maps.model.LatLng
 import es.crmone.app.repository.map.CRMMapDTO
 import es.crmone.app.repository.map.CRMMapRepository
+import es.crmone.app.repository.map.CheckPointOperation
 import es.crmone.app.repository.session.SessionRepository
 import kotlinx.coroutines.flow.flow
 
@@ -24,16 +25,22 @@ class CRMMapViewModel (private val repository: CRMMapRepository, private  val se
     fun getPositons(): LiveData<PositionsOp> {
         return flow {
             //inicio llamada
-            repository.getCheckPoint(object: CRMMapRepository.CRMMapCallBack {
-                override fun onSuccess(points: List<CRMMapDTO>) {
-
-                    val locations = points.map { CrmLocation(it.title, it.getLocation()) }
-
-                    val response = PositionsOp.Success(locations)
-                    emit(response)
-
+            emit(PositionsOp.Loading)
+            when(val operation = repository.getCheckPoint()) {
+                CheckPointOperation.Error -> {
+                    emit(PositionsOp.Error)
                 }
-            })
+                is CheckPointOperation.Success -> {
+                    val locations = operation.locationsDTO.map {
+                        val location = it.getLocation()
+                        if (location!=null)
+                            CrmLocation(it.title?:"ERROR DEL SERVIDOR", location)
+                        else
+                            null
+                    }
+                    emit(PositionsOp.Success(locations.filterNotNull()))
+                }
+            }
 
 
 //            emit(PositionsOp.Loading)
@@ -41,12 +48,12 @@ class CRMMapViewModel (private val repository: CRMMapRepository, private  val se
             //fin llamada
 
             //Respuesta del servicio que te devuelte las posiciones
-            /*val locations: List<CrmLocation> = listOf(
-                CrmLocation("Casa Ricardo", LatLng(40.4297934,-3.7123437)),
-                CrmLocation("Go fit", LatLng(40.4410008,-3.7108467)),
-            )
-            val response = PositionsOp.Success(locations)
-            emit(response)*/
+//            val locations: List<CrmLocation> = listOf(
+//                CrmLocation("Casa Ricardo", LatLng(40.4297934,-3.7123437)),
+//                CrmLocation("Go fit", LatLng(40.4410008,-3.7108467)),
+//            )
+//            val response = PositionsOp.Success(locations)
+//            emit(response)
         }.asLiveData(viewModelScope.coroutineContext)
     }
 }

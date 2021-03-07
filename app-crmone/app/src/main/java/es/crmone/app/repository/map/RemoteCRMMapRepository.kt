@@ -8,22 +8,19 @@ import retrofit2.Response
 
 
 class RemoteCRMMapRepository(private val api: EndPoints = RetrofitService.endpoints) : CRMMapRepository {
-    override fun getCheckPoint(callback: CRMMapRepository.CRMMapCallBack) {
-        api.getCheckPoint().enqueue(object : Callback<List<CRMMapDTO>> {
-            override fun onResponse(call: Call<List<CRMMapDTO>>, response: Response<List<CRMMapDTO>>) {
-                if (response.isSuccessful) {
-                    val checkPoints = response.body()
-                    if (checkPoints!=null) {
-                        callback.onSuccess(checkPoints)
-                        return
-                    }
-                }
-                callback.onError()
+    override suspend fun getCheckPoint(): CheckPointOperation {
+        val response = api.getCheckPoint()
+        if (response.isSuccessful) {
+            val body = response.body()
+            if (body!=null) {
+                return CheckPointOperation.Success(body)
+            } else {
+                return CheckPointOperation.Error
             }
-            override fun onFailure(call: Call<List<CRMMapDTO>>, t: Throwable) {
-                callback.onError()
-            }
-        })
+
+        } else {
+            return CheckPointOperation.Error
+        }
     }
 }
 

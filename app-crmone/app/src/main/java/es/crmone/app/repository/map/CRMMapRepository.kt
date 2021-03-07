@@ -1,14 +1,9 @@
 package es.crmone.app.repository.map
 
-
-
-
+sealed class CheckPointOperation {
+    class Success(val locationsDTO: List<CRMMapDTO>): CheckPointOperation()
+    object Error: CheckPointOperation()
+}
 interface CRMMapRepository {
-    interface CRMMapCallBack {
-        fun onSuccess(map: List<CRMMapDTO>)
-        fun onError()
-    }
-    fun getCheckPoint(callback: CRMMapRepository.CRMMapCallBack)
-
-
+    suspend fun getCheckPoint(): CheckPointOperation
 }
