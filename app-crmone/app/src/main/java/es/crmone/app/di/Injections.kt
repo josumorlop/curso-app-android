@@ -6,6 +6,7 @@ import es.crmone.app.repository.client_create.RemoteClientCreateRepository
 import es.crmone.app.repository.client_info.RemoteClientInfoRepository
 import es.crmone.app.repository.clientes.RemoteClientsRepository
 import es.crmone.app.repository.login.RemoteLoginRepository
+import es.crmone.app.repository.map.RemoteCRMMapRepository
 import es.crmone.app.repository.report.RemoteReportRepository
 import es.crmone.app.repository.session.SessionRepositoryImp
 
@@ -18,4 +19,5 @@ object Injections {
     val reportRepository by lazy { RemoteReportRepository() }
     val checkOutRepository by lazy { RemoteCheckOutRepository() }
     val clientCreateRepository by lazy { RemoteClientCreateRepository() }
+    val crmMapRepository by lazy { RemoteCRMMapRepository() }
 }

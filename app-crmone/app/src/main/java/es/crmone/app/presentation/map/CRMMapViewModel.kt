@@ -5,6 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.google.android.gms.maps.model.LatLng
+import es.crmone.app.repository.map.CRMMapRepository
+import es.crmone.app.repository.session.SessionRepository
 import kotlinx.coroutines.flow.flow
 
 class CrmLocation(val title: String, val latLng: LatLng)
@@ -14,7 +16,8 @@ sealed class PositionsOp {
     class Success(val locations: List<CrmLocation>): PositionsOp()
 }
 
-class CRMMapViewModel: ViewModel() {
+
+class CRMMapViewModel (private val CRMMapRepository: CRMMapRepository, private  val sessionRepository: SessionRepository): ViewModel() {
 
     fun getPositons(): LiveData<PositionsOp> {
         return flow {

@@ -37,6 +37,8 @@ class CRMMapFragment : BaseFragment<FragmentMapBinding>(R.layout.fragment_map), 
         mapFragment.getMapAsync(this)
     }
 
+
+
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
         mMap.uiSettings.isZoomControlsEnabled = true

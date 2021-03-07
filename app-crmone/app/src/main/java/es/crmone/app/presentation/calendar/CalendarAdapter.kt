@@ -31,31 +31,35 @@ class CalendarAdapter(private val calendar: List<CalendarOne>, val listener: Che
                     binding.tvItemCalendarDateTimeUser.text = value.usuarioRegistro.nombre+" "+value.usuarioRegistro.apellido1+" · "+value.fecha
 
                     binding.tvItemCalendarComment.text = value.comentarios
-                    if (value.comentarios.isNullOrEmpty())
-                        binding.tvItemCalendarComment.isVisible = false
+                    binding.tvItemCalendarComment.isVisible = !value.comentarios.isNullOrEmpty()
 
                     binding.tvItemCalendarComment2.text = value.comentarios2
-                    if (value.comentarios2.isNullOrEmpty())
-                        binding.tvItemCalendarComment2.isVisible = false
+                    binding.tvItemCalendarComment2.isVisible = !value.comentarios2.isNullOrEmpty()
 
                     binding.tvItemCalendarCheckInHour.text = value.checkin
                     if (value.checkin.isNullOrEmpty()) {
                         binding.ivIconLocation.isVisible = false
                         binding.tvItemCalendarCheckInHour.isVisible = false
                         binding.llCheckin.isVisible = false
+                    } else {
+                        binding.ivIconLocation.isVisible = true
+                        binding.tvItemCalendarCheckInHour.isVisible = true
+                        binding.llCheckin.isVisible = true
                     }
 
                     binding.tvItemCalendarCheckOutHour.text = value.checkout
                     if (value.checkout.isNullOrEmpty()) {
                         binding.tvItemCalendarSeparador.isVisible = false
                         binding.tvItemCalendarCheckOutHour.isVisible = false
+                    } else {
+                        binding.tvItemCalendarSeparador.isVisible = true
+                        binding.tvItemCalendarCheckOutHour.isVisible = true
                     }
 
                     binding.tvItemCalendarClient.isVisible = true
                     binding.tvItemCalendarClient.text = value.cliente.razonSocial+" "+value.cliente.cif
 
-                    if (value.permisoCheckOut)
-                        binding.btCheckOut.isVisible = true
+                    binding.btCheckOut.isVisible = value.permisoCheckOut
 
                     binding.btCheckOut.setOnClickListener {
                         listener(value)
